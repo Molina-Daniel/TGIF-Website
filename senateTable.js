@@ -73,25 +73,28 @@ senateData.results[0].members.forEach(votesPct => { // Loop to get the porcentag
 
 // Create rows and cells function
 
-function rowsAndCellsCreator(fullNames) {
+function rowsAndCellsCreator(fullName, party, state, seniority, votesPercentage) {
   let tBody = document.getElementById("senateTable");
 
-  let rows = tBody.insertRow(-1);
+  for (let i = 0; i < fullName.length; i++) {
+    let rows = tBody.insertRow(-1);
 
-  let cellFullName = rows.insertCell(0);
-  let cellParty = rows.insertCell(1);
-  let cellState = rows.insertCell(2);
-  let cellSeniority = rows.insertCell(3);
-  let cellVotesPercentage = rows.insertCell(4);
+    let cellFullName = rows.insertCell(0);
+    let cellParty = rows.insertCell(1);
+    let cellState = rows.insertCell(2);
+    let cellSeniority = rows.insertCell(3);
+    let cellVotesPercentage = rows.insertCell(4);
 
-  cellFullName.innerHTML = fullNames[0];
-  cellParty.innerHTML = "R";
-  cellState.innerHTML = "TN";
-  cellSeniority.innerHTML = "11";
-  cellVotesPercentage.innerHTML = "85.97%";
+    cellFullName.innerHTML = fullName[i];
+    cellParty.innerHTML = party[i];
+    cellState.innerHTML = state[i];
+    cellSeniority.innerHTML = seniority[i];
+    cellVotesPercentage.innerHTML = votesPercentage[i];
+  }
+
 }
 
-// rowsAndCellsCreator(fullNameArr);
+rowsAndCellsCreator(fullNameArr, partyArr, stateArr, seniorityArr, votesPercentageArr);
 
 // Get the data from the JSON
 // function getFullName(fromHere) {
