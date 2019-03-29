@@ -27,6 +27,20 @@ senateData.results[0].members.forEach(name => { // Loop to get first name, middl
 });
 
 
+// Get the url from the data:
+
+let fullNameWebArr = [];
+
+senateData.results[0].members.forEach(url => { // 
+  let fullNameWeb;
+  fullNameWeb = url.url; // 
+
+
+
+  fullNameWebArr.push(fullNameWeb); // 
+});
+
+
 // Get the Party info from the data
 
 let partyArr = []; // Array holding all the parties
@@ -73,19 +87,32 @@ senateData.results[0].members.forEach(votesPct => { // Loop to get the porcentag
 
 // Create rows and cells function
 
-function rowsAndCellsCreator(fullName, party, state, seniority, votesPercentage) {
+function rowsAndCellsCreator(fullName, url, party, state, seniority, votesPercentage) {
   let tBody = document.getElementById("senateTable");
 
   for (let i = 0; i < fullName.length; i++) {
+    // Create a new row
     let rows = tBody.insertRow(-1);
 
+    // Create the full name cell
     let cellFullName = rows.insertCell(0);
+
+    // Create the anchor for the names
+    let makeLink = document.createElement("a");
+    // Insert the attribute href and the url to the anchor tag
+    makeLink.setAttribute("href", url[i]);
+    // Insert the full name text in the anchor
+    makeLink.innerHTML = fullName[i];
+    // Append the anchor tag to its cell
+    cellFullName.appendChild(makeLink);
+
+    // Create remaining cells
     let cellParty = rows.insertCell(1);
     let cellState = rows.insertCell(2);
     let cellSeniority = rows.insertCell(3);
     let cellVotesPercentage = rows.insertCell(4);
 
-    cellFullName.innerHTML = fullName[i];
+    // Insert the correspondent values to each cell
     cellParty.innerHTML = party[i];
     cellState.innerHTML = state[i];
     cellSeniority.innerHTML = seniority[i];
@@ -94,20 +121,17 @@ function rowsAndCellsCreator(fullName, party, state, seniority, votesPercentage)
 
 }
 
-rowsAndCellsCreator(fullNameArr, partyArr, stateArr, seniorityArr, votesPercentageArr);
+rowsAndCellsCreator(fullNameArr, fullNameWebArr, partyArr, stateArr, seniorityArr, votesPercentageArr);
 
-// Get the data from the JSON
-// function getFullName(fromHere) {
-//   let firstName =  ; // = fromHere.results[0].members[0].first_name;
+// let makeLink = document.createElement("a");
 
+// makeLink.setAttribute("href", "https://www.alexander.senate.gov/public");
 
-//   return firstName;
-// }
+// makeLink.innerHTML = "HOLAAA";
 
-// console.log(fullName);
+// let modificar = document.getElementById("pruebaLink");
 
-// console.log(getTheName(senateData));
-
+// modificar.appendChild(makeLink);
 
 // let makeTR = document.createElement("tr");
 // let makeTD = document.createElement("td");
@@ -122,5 +146,3 @@ rowsAndCellsCreator(fullNameArr, partyArr, stateArr, seniorityArr, votesPercenta
 
 // table.appendChild(makeTR);
 
-// .insertRow
-// .insertCell
