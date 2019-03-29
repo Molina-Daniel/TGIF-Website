@@ -7,16 +7,73 @@
 // coger el valor "x" del objeto senateData
 // X crea una fila(tr) 
 // X crea una columna(td)
-// mete el valor "x" en la columna
+// X mete el valor "x" en la columna
 
-// function getElement() {
-//   let firstName = senateData.results[0].members[0].first_name;
-//   return firstName;
-// }
-// console.log(getElement(senateData));
 
-// Create rows and cells
-function rowsAndCellsCreator() {
+// Get the Full Name from the data:
+
+let fullNameArr = []; // Array holding all the full names
+
+senateData.results[0].members.forEach(name => { // Loop to get first name, middle name(if exist) and last name, and build up the Full Name
+  let fullName;
+  fullName = name.first_name; // Get the first name
+
+  if (name.middle_name !== null) {
+    fullName += " " + name.middle_name; // Get the middle name when exist and add it to the full name
+  }
+
+  fullName += " " + name.last_name; // Get the last name and add it to the full name
+  fullNameArr.push(fullName); // Push the full name to the holder array
+});
+
+
+// Get the Party info from the data
+
+let partyArr = []; // Array holding all the parties
+
+senateData.results[0].members.forEach(party => { // Loop to get the party of each member
+  let eachParty = party.party; // Get the party
+
+  partyArr.push(eachParty); // Push the party info to the holder array
+});
+
+
+// Get the State info from the data
+
+let stateArr = []; // Array holding all the States info
+
+senateData.results[0].members.forEach(state => { // Loop to get the State of each member
+  let eachState = state.state; // Get the State
+
+  stateArr.push(eachState); // Push the State info to the holder array
+});
+
+
+// Get the Seniority info from the data
+
+let seniorityArr = []; // Array holding all the Seniority info
+
+senateData.results[0].members.forEach(seniority => { // Loop to get the Seniority of each member
+  let eachSeniority = seniority.seniority; // Get the Seniority
+
+  seniorityArr.push(eachSeniority); // Push the Seniority info to the holder array
+});
+
+
+// Get the Percentage of Votes from the data
+
+let votesPercentageArr = []; // Array holding all the porcentages of votes info
+
+senateData.results[0].members.forEach(votesPct => { // Loop to get the porcentages of votes of each member
+  let eachVotesPct = votesPct.votes_with_party_pct + "%"; // Get the porcentages of votes and add % symbol
+
+  votesPercentageArr.push(eachVotesPct); // Push the porcentages of votes info to the holder array
+});
+
+
+// Create rows and cells function
+
+function rowsAndCellsCreator(fullNames) {
   let tBody = document.getElementById("senateTable");
 
   let rows = tBody.insertRow(-1);
@@ -27,23 +84,26 @@ function rowsAndCellsCreator() {
   let cellSeniority = rows.insertCell(3);
   let cellVotesPercentage = rows.insertCell(4);
 
-  cellFullName.innerHTML = "Pepe";
+  cellFullName.innerHTML = fullNames[0];
   cellParty.innerHTML = "R";
   cellState.innerHTML = "TN";
   cellSeniority.innerHTML = "11";
   cellVotesPercentage.innerHTML = "85.97%";
 }
 
-rowsAndCellsCreator();
+// rowsAndCellsCreator(fullNameArr);
 
 // Get the data from the JSON
-function getTheName(fromHere) {
-  let firstName = fromHere.results[0].members[0].first_name;
-  return firstName;
-}
+// function getFullName(fromHere) {
+//   let firstName =  ; // = fromHere.results[0].members[0].first_name;
 
-console.log(getTheName(senateData));
 
+//   return firstName;
+// }
+
+// console.log(fullName);
+
+// console.log(getTheName(senateData));
 
 
 // let makeTR = document.createElement("tr");
