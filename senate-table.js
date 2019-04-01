@@ -9,81 +9,89 @@
 // X crea una columna(td)
 // X mete el valor "x" en la columna
 
+cogerDatos();
+
+
 
 // Get the Full Name from the data:
 
-let fullNameArr = []; // Array holding all the full names
+function cogerDatos() {
+  let fullNameArr = []; // Array holding all the full names
 
-senateData.results[0].members.forEach(name => { // Loop to get first name, middle name(if exist) and last name, and build up the Full Name
-  let fullName;
-  fullName = name.first_name; // Get the first name
+  senateData.results[0].members.forEach(name => { // Loop to get first name, middle name(if exist) and last name, and build up the Full Name
+    let fullName;
+    fullName = name.first_name; // Get the first name
 
-  if (name.middle_name !== null) {
-    fullName += " " + name.middle_name; // Get the middle name when exist and add it to the full name
-  }
+    if (name.middle_name !== null) {
+      fullName += " " + name.middle_name; // Get the middle name when exist and add it to the full name
+    }
 
-  fullName += " " + name.last_name; // Get the last name and add it to the full name
-  fullNameArr.push(fullName); // Push the full name to the holder array
-});
-
-
-// Get the url from the data:
-
-let fullNameWebArr = [];
-
-senateData.results[0].members.forEach(url => { // 
-  let fullNameWeb;
-  fullNameWeb = url.url; // 
+    fullName += " " + name.last_name; // Get the last name and add it to the full name
+    fullNameArr.push(fullName); // Push the full name to the holder array
+  });
 
 
 
-  fullNameWebArr.push(fullNameWeb); // 
-});
+
+  // Get the url from the data:
+
+  let fullNameWebArr = [];
+
+  senateData.results[0].members.forEach(url => { // 
+    let fullNameWeb;
+    fullNameWeb = url.url; // 
 
 
-// Get the Party info from the data
 
-let partyArr = []; // Array holding all the parties
-
-senateData.results[0].members.forEach(party => { // Loop to get the party of each member
-  let eachParty = party.party; // Get the party
-
-  partyArr.push(eachParty); // Push the party info to the holder array
-});
+    fullNameWebArr.push(fullNameWeb); // 
+  });
 
 
-// Get the State info from the data
+  // Get the Party info from the data
 
-let stateArr = []; // Array holding all the States info
+  let partyArr = []; // Array holding all the parties
 
-senateData.results[0].members.forEach(state => { // Loop to get the State of each member
-  let eachState = state.state; // Get the State
+  senateData.results[0].members.forEach(party => { // Loop to get the party of each member
+    let eachParty = party.party; // Get the party
 
-  stateArr.push(eachState); // Push the State info to the holder array
-});
-
-
-// Get the Seniority info from the data
-
-let seniorityArr = []; // Array holding all the Seniority info
-
-senateData.results[0].members.forEach(seniority => { // Loop to get the Seniority of each member
-  let eachSeniority = seniority.seniority; // Get the Seniority
-
-  seniorityArr.push(eachSeniority); // Push the Seniority info to the holder array
-});
+    partyArr.push(eachParty); // Push the party info to the holder array
+  });
 
 
-// Get the Percentage of Votes from the data
+  // Get the State info from the data
 
-let votesPercentageArr = []; // Array holding all the porcentages of votes info
+  let stateArr = []; // Array holding all the States info
 
-senateData.results[0].members.forEach(votesPct => { // Loop to get the porcentages of votes of each member
-  let eachVotesPct = votesPct.votes_with_party_pct + "%"; // Get the porcentages of votes and add % symbol
+  senateData.results[0].members.forEach(state => { // Loop to get the State of each member
+    let eachState = state.state; // Get the State
 
-  votesPercentageArr.push(eachVotesPct); // Push the porcentages of votes info to the holder array
-});
+    stateArr.push(eachState); // Push the State info to the holder array
+  });
 
+
+  // Get the Seniority info from the data
+
+  let seniorityArr = []; // Array holding all the Seniority info
+
+  senateData.results[0].members.forEach(seniority => { // Loop to get the Seniority of each member
+    let eachSeniority = seniority.seniority; // Get the Seniority
+
+    seniorityArr.push(eachSeniority); // Push the Seniority info to the holder array
+  });
+
+
+  // Get the Percentage of Votes from the data
+
+  let votesPercentageArr = []; // Array holding all the porcentages of votes info
+
+  senateData.results[0].members.forEach(votesPct => { // Loop to get the porcentages of votes of each member
+    let eachVotesPct = votesPct.votes_with_party_pct + "%"; // Get the porcentages of votes and add % symbol
+
+    votesPercentageArr.push(eachVotesPct); // Push the porcentages of votes info to the holder array
+  });
+
+  rowsAndCellsCreator(fullNameArr, fullNameWebArr, partyArr, stateArr, seniorityArr, votesPercentageArr);
+}
 
 // Create rows and cells function
 
@@ -121,7 +129,7 @@ function rowsAndCellsCreator(fullName, url, party, state, seniority, votesPercen
 
 }
 
-rowsAndCellsCreator(fullNameArr, fullNameWebArr, partyArr, stateArr, seniorityArr, votesPercentageArr);
+
 
 // let makeLink = document.createElement("a");
 

@@ -1,102 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
 
-    </head>
-    
-    <body>
-         <nav>
-          <div>
-            <div>
-              <a href="#">TGIF</a>
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <title>TGIF House</title>
+
+</head>
+
+<body>
+
+  <div class="container py-2">
+
+    <div class="row pt-3">
+      <div class="col-4">
+        <a href="home-page.html"><img src="img/e442323fb4db46a2df110f6724ac597a.jpg" alt=""></a>
+      </div>
+      <div class="col-8">
+        <div class="row h-75 align-items-center">
+          <h1 class="w-100 text-center">Transparent Government in Fact</h1>
+        </div>
+        <div class="row h-25 justify-content-end">
+          <a class="align-self-end pr-3" href="mailto:dmolcap&#64;gmail.com">info&#64;tgif.net</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="row pt-3">
+      <nav class="col-12 navbar">
+        <ul class="nav border w-100">
+          <li class="nav-item">
+            <a class="nav-link active" href="home-page.html">Home</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+              aria-expanded="false">Congress 113</a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="senate-page.html">Senate</a>
+              <a class="dropdown-item" href="#">House</a>
             </div>
-            <ul >
-              <li><a href="#">Home</a></li>
-              <li >
-                <a href="#">Congress 113</a>
-                <ul >
-                  <li><a href="#">Senate</a></li>
-                  <li><a href="#">House</a></li>
-                </ul>
-              </li>
-            </ul>
-          </div>
-        </nav>        
-            <!--Table container-->
-        <div>     
-            <h2>Congressmen</h2>
-            <p>The major power of the House is to pass federal legislation that affects the entire country, although its bills must also be passed by the Senate and further agreed to by the U.S. President before becoming law (unless both the House and Senate re-pass the legislation with a two-thirds majority in each chamber). The House has some exclusive powers: the power to initiate revenue bills, to impeach officials (impeached officials are subsequently tried in the Senate), and to elect the U.S. President in case there is no majority in the Electoral College.</p>
-            <p>Each U.S. state is represented in the House in proportion to its population as measured in the census, but every state is entitled to at least one representative. </p>
-       	    <table>
-                <thead>
-                    <tr>
-                        <th>Members</th>
-                        <th>First name</th>
-                        <th>Middle name</th>
-                        <th>Last name</th>
-                        <th>Party</th>
-                        <th>Total votes</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Robert</td>
-                        <td>B.</td>
-                        <td>Aderholt</td>
-                        <td>R</td>
-                        <td>1192</td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Justin</td>
-                        <td>null</td>
-                        <td>Amash</td>
-                        <td>R</td>
-                        <td>1192</td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>Mark</td>
-                        <td>null</td>
-                        <td>Amodei</td>
-                        <td>R</td>
-                        <td>1192</td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td>Alma</td>
-                        <td></td>
-                        <td>Adams</td>
-                        <td>D</td>
-                        <td>48</td>
-                    </tr>
-                    <tr>
-                        <td>5</td>
-                        <td>Spencer</td>
-                        <td>null</td>
-                        <td>Bachus</td>
-                        <td>R</td>
-                        <td>1192</td>
-                    </tr>
-                    <tr>
-                        <td>6</td>
-                        <td>Joe</td>
-                        <td>L.</td>
-                        <td>Barton</td>
-                        <td>R</td>
-                        <td>1192</td>
-                    </tr>
-                    <tr>
-                        <td>7</td>
-                        <td>Xavier</td>
-                        <td>null</td>
-                        <td>Becerra</td>
-                        <td>D</td>
-                        <td>1192</td>
-                    </tr>
-                </tbody>
-            </table>
-	    </div>
-    </body>
+          </li>
+        </ul>
+      </nav>
+    </div>
+    <!--Table container-->
+    <div class="row">
+      <div class="col-8">
+        <h2>Congressmen</h2>
+        <p class="text-justify">The major power of the House is to pass federal legislation that affects the entire
+          country, although its
+          bills must also be passed by the Senate and further agreed to by the U.S. President before becoming law
+          (unless both the House and Senate re-pass the legislation with a two-thirds majority in each chamber). The
+          House has some exclusive powers: the power to initiate revenue bills, to impeach officials (impeached
+          officials are subsequently tried in the Senate), and to elect the U.S. President in case there is no
+          majority in the Electoral College.</p>
+        <p>Each U.S. state is represented in the House in proportion to its population as measured in the census, but
+          every state is entitled to at least one representative. </p>
+      </div>
+    </div>
+
+    <div>
+      <table class="table table-bordered table-hover">
+        <thead>
+          <tr>
+            <th>Congressman</th>
+            <th>Party Affilication</th>
+            <th>State</th>
+            <th>Seniority</th>
+            <th>Percentage of Votes</th>
+          </tr>
+        </thead>
+        <tbody id="houseTable">
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+</body>
+
 </html>
