@@ -1,19 +1,17 @@
-"use strict"
-
-// document.getElementById("senateData").innerHTML = JSON.stringify(senateData, null, 2);
-
-// senateData.results[0].members[0].first_name
+'use strict'
 
 tableCreator();
 
 
-
-// Get the Full Name from the data:
+// Get the data from the JSON and create the table:
 
 function tableCreator() {
+
+  // Get the Full Name from the data:
+
   let fullNameArr = []; // Array holding all the full names
 
-  senateData.results[0].members.forEach(name => { // Loop to get first name, middle name(if exist) and last name, and build up the Full Name
+  houseData.results[0].members.forEach(name => { // Loop to get first name, middle name(if exist) and last name, and build up the Full Name
     let fullName;
     fullName = name.first_name; // Get the first name
 
@@ -30,7 +28,7 @@ function tableCreator() {
 
   let fullNameWebArr = [];
 
-  senateData.results[0].members.forEach(url => { // 
+  houseData.results[0].members.forEach(url => { // 
     let fullNameWeb;
     fullNameWeb = url.url; // 
 
@@ -44,7 +42,7 @@ function tableCreator() {
 
   let partyArr = []; // Array holding all the parties
 
-  senateData.results[0].members.forEach(party => { // Loop to get the party of each member
+  houseData.results[0].members.forEach(party => { // Loop to get the party of each member
     let eachParty = party.party; // Get the party
 
     partyArr.push(eachParty); // Push the party info to the holder array
@@ -55,7 +53,7 @@ function tableCreator() {
 
   let stateArr = []; // Array holding all the States info
 
-  senateData.results[0].members.forEach(state => { // Loop to get the State of each member
+  houseData.results[0].members.forEach(state => { // Loop to get the State of each member
     let eachState = state.state; // Get the State
 
     stateArr.push(eachState); // Push the State info to the holder array
@@ -66,7 +64,7 @@ function tableCreator() {
 
   let seniorityArr = []; // Array holding all the Seniority info
 
-  senateData.results[0].members.forEach(seniority => { // Loop to get the Seniority of each member
+  houseData.results[0].members.forEach(seniority => { // Loop to get the Seniority of each member
     let eachSeniority = seniority.seniority; // Get the Seniority
 
     seniorityArr.push(eachSeniority); // Push the Seniority info to the holder array
@@ -77,7 +75,7 @@ function tableCreator() {
 
   let votesPercentageArr = []; // Array holding all the porcentages of votes info
 
-  senateData.results[0].members.forEach(votesPct => { // Loop to get the porcentages of votes of each member
+  houseData.results[0].members.forEach(votesPct => { // Loop to get the porcentages of votes of each member
     let eachVotesPct = votesPct.votes_with_party_pct + "%"; // Get the porcentages of votes and add % symbol
 
     votesPercentageArr.push(eachVotesPct); // Push the porcentages of votes info to the holder array
@@ -89,7 +87,7 @@ function tableCreator() {
 // Create rows and cells function
 
 function rowsAndCellsCreator(fullName, url, party, state, seniority, votesPercentage) {
-  let tBody = document.getElementById("senateTable");
+  let tBody = document.getElementById("houseTable");
 
   for (let i = 0; i < fullName.length; i++) {
     // Create a new row
@@ -121,29 +119,3 @@ function rowsAndCellsCreator(fullName, url, party, state, seniority, votesPercen
   }
 
 }
-
-
-
-// let makeLink = document.createElement("a");
-
-// makeLink.setAttribute("href", "https://www.alexander.senate.gov/public");
-
-// makeLink.innerHTML = "HOLAAA";
-
-// let modificar = document.getElementById("pruebaLink");
-
-// modificar.appendChild(makeLink);
-
-// let makeTR = document.createElement("tr");
-// let makeTD = document.createElement("td");
-
-// makeTD.innerHTML = "Hola";
-// makeTD.classList.add("container");
-// makeTD.innerHTML = "Hola";
-
-// makeTR.appendChild(makeTD);
-
-// let table = document.getElementById("senateData");
-
-// table.appendChild(makeTR);
-
