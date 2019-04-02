@@ -4,6 +4,9 @@
 
 let members = senateData.results[0].members;
 
+let stateArr = []; // Array holding all the States info
+
+
 
 tableCreator();
 
@@ -53,7 +56,6 @@ function tableCreator() {
 
   // Get the State info from the data
 
-  let stateArr = []; // Array holding all the States info
 
   members.forEach(state => { // Loop to get the State of each member
     let eachState = state.state; // Get the State
@@ -84,6 +86,8 @@ function tableCreator() {
   });
 
   rowsAndCellsCreator(fullNameArr, fullNameWebArr, partyArr, stateArr, seniorityArr, votesPercentageArr);
+
+  stateSelectOptionsCreator();
 }
 
 // Create rows and cells function
@@ -154,9 +158,31 @@ function checkboxEvent() {
 }
 
 
-// Create the options of the select filter
+// Create the options for the select filter
 
+function stateSelectOptionsCreator() {
 
+  // Create an array with all the states sorted
+  let stateArrNoDuplicates = [];
+
+  for (let i = 0; i < stateArr.length; i++) {
+    if (!stateArrNoDuplicates.includes(stateArr[i])) {
+      stateArrNoDuplicates.push(stateArr[i]);
+    }
+  }
+
+  let stateArrSelect = stateArrNoDuplicates.sort();
+
+  // Create the option list in the HTML
+  let targetSelect = document.getElementById("state");
+
+  let selectOptions = "";
+
+  for (let i = 0; i < stateArrSelect.length; i++) {
+    selectOptions += `<option value="${stateArrSelect[i]}">${stateArrSelect[i]}</option>`;
+  }
+  return targetSelect.innerHTML = selectOptions;
+}
 
 
 // let makeLink = document.createElement("a");
