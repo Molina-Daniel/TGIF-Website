@@ -17,7 +17,7 @@
 
 		<div class="row pt-3">
 			<div class="col-4">
-				<a href="home-page.html"><img src="img/e442323fb4db46a2df110f6724ac597a.jpg" alt=""></a>
+				<a href="home.html"><img src="img/e442323fb4db46a2df110f6724ac597a.jpg" alt=""></a>
 			</div>
 			<div class="col-8">
 				<div class="row h-75 align-items-center">
@@ -33,7 +33,7 @@
 			<nav class="col-12 navbar">
 				<ul class="nav border w-100">
 					<li class="nav-item">
-						<a class="nav-link active" href="home-page.html">Home</a></li>
+						<a class="nav-link active" href="home.html">Home</a></li>
 					<li class="nav-item dropdown">
 						<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
 							aria-expanded="false">Congress 113</a>
@@ -62,6 +62,31 @@
 					Cabinet secretaries, federal judges, other federal executive officials, military officers, regulatory
 					officials, ambassadors, and other federal uniformed officers, as well as trial of federal officials impeached
 					by the House.</p>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-12 border form-group">
+				<div class="form-check form-check-inline">
+					<input type="checkbox" name="partyCheckboxes" id="democrat" value="D" onchange="checkboxEvent()">
+					<label for="democrat">Democrat</label>
+				</div>
+				<div class="form-check form-check-inline">
+					<input type="checkbox" name="partyCheckboxes" id="republican" value="R" checked="true"
+						onchange="checkboxEvent()">
+					<label for="republican">Republican</label>
+				</div>
+				<div class="form-check form-check-inline">
+					<input type="checkbox" name="partyCheckboxes" id="independent" value="I" checked="true"
+						onchange="checkboxEvent()">
+					<label for="independent">Independent</label>
+				</div>
+				<div>
+					<label for="state">Select State:</label>
+					<select name="partyCheckboxes" id="state">
+						<option value="allStates">All States</option>
+					</select>
+				</div>
 			</div>
 		</div>
 

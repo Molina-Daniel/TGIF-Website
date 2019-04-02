@@ -3,7 +3,7 @@
 tableCreator();
 
 
-// Get the data from the JSON and create the table:
+// Get all the data from the JSON and execute the function to build the table:
 
 function tableCreator() {
 
@@ -26,15 +26,15 @@ function tableCreator() {
 
   // Get the url from the data:
 
-  let fullNameWebArr = [];
+  let fullNameWebArr = []; // Array storing all the urls
 
-  houseData.results[0].members.forEach(url => { // 
+  houseData.results[0].members.forEach(url => { // Loop to get the url of each member
     let fullNameWeb;
-    fullNameWeb = url.url; // 
+    fullNameWeb = url.url; // Get the url from the data
 
 
 
-    fullNameWebArr.push(fullNameWeb); // 
+    fullNameWebArr.push(fullNameWeb); // Push the url to the holder array
   });
 
 
