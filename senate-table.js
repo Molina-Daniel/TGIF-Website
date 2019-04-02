@@ -101,7 +101,7 @@ function rowsAndCellsCreator(fullName, url, party, state, seniority, votesPercen
 
   for (let i = 0; i < members.length; i++) {
 
-    // Check if the current member party is or not in the checkboxes values
+    // Check if the current member party is or not in the checkboxes values and create its row and cells if so
     if (checkboxesArr.indexOf(party[i]) >= 0) {
       // Create a new row
       let rows = tBody.insertRow(-1);
@@ -145,7 +145,6 @@ function getCheckboxesValues() {
 
   return checkboxesValue;
 }
-console.log(getCheckboxesValues());
 
 
 // Call the main function tableCreator() whenever a checkbox is changed
@@ -171,6 +170,7 @@ function stateSelectOptionsCreator() {
     }
   }
 
+  stateArrNoDuplicates.push("-All-")
   let stateArrSelect = stateArrNoDuplicates.sort();
 
   // Create the option list in the HTML
