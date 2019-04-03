@@ -2,9 +2,14 @@
 
 // document.getElementById("senateData").innerHTML = JSON.stringify(senateData, null, 2);
 
-let members = senateData.results[0].members;
-
+let fullNameArr = []; // Array holding all the full names
+let fullNameWebArr = []; // Array storing all the urls
+let partyArr = []; // Array holding all the parties
 let stateArr = []; // Array holding all the States info
+let seniorityArr = []; // Array holding all the Seniority info
+let votesPercentageArr = []; // Array holding all the porcentages of votes info
+
+let members = senateData.results[0].members;
 
 
 
@@ -14,7 +19,6 @@ tableCreator();
 // Get all the data from the JSON and execute the function to build the table:
 
 function tableCreator() {
-  let fullNameArr = []; // Array holding all the full names
 
   members.forEach(name => { // Loop to get first name, middle name(if exist) and last name, and build up the Full Name
     let fullName;
@@ -31,7 +35,6 @@ function tableCreator() {
 
   // Get the url from the data:
 
-  let fullNameWebArr = []; // Array storing all the urls
 
   members.forEach(url => { // Loop to get the url of each member
     let fullNameWeb;
@@ -45,7 +48,7 @@ function tableCreator() {
 
   // Get the Party info from the data
 
-  let partyArr = []; // Array holding all the parties
+
 
   members.forEach(party => { // Loop to get the party of each member
     let eachParty = party.party; // Get the party
@@ -66,7 +69,6 @@ function tableCreator() {
 
   // Get the Seniority info from the data
 
-  let seniorityArr = []; // Array holding all the Seniority info
 
   members.forEach(seniority => { // Loop to get the Seniority of each member
     let eachSeniority = seniority.seniority; // Get the Seniority
@@ -77,7 +79,6 @@ function tableCreator() {
 
   // Get the Percentage of Votes from the data
 
-  let votesPercentageArr = []; // Array holding all the porcentages of votes info
 
   members.forEach(votesPct => { // Loop to get the porcentages of votes of each member
     let eachVotesPct = votesPct.votes_with_party_pct + "%"; // Get the porcentages of votes and add % symbol
@@ -85,24 +86,77 @@ function tableCreator() {
     votesPercentageArr.push(eachVotesPct); // Push the porcentages of votes info to the holder array
   });
 
-  rowsAndCellsCreator(fullNameArr, fullNameWebArr, partyArr, stateArr, seniorityArr, votesPercentageArr);
+  // rowsAndCellsCreator(fullNameArr, fullNameWebArr, partyArr, stateArr, seniorityArr, votesPercentageArr);
+  createTableChecked();
 
   stateSelectOptionsCreator();
 }
+
+
+
 
 // Create rows and cells function
 
 function rowsAndCellsCreator(fullName, url, party, state, seniority, votesPercentage) {
   let tBody = document.getElementById("senateTable");
 
-  tBody.innerHTML = "";
+  for (let i = 0; i < members.length; i++) {
+
+    // Check if the current member party is or not in the checkboxes values and create its row and cells if so
+    // if (checkboxesArr.indexOf(members[i].party) >= 0)
+
+    // Create a new row
+    let rows = tBody.insertRow(-1);
+
+    // Create the full name cell
+    let cellFullName = rows.insertCell(0);
+
+    // Create the anchor for the names
+    let makeLink = document.createElement("a");
+    // Insert the attribute href and the url to the anchor tag
+    makeLink.setAttribute("href", url[i]);
+    // Insert the full name text in the anchor
+    makeLink.innerHTML = fullName[i];
+    // Append the anchor tag to its cell
+    cellFullName.appendChild(makeLink);
+
+    // Create remaining cells
+    let cellParty = rows.insertCell(1);
+    let cellState = rows.insertCell(2);
+    let cellSeniority = rows.insertCell(3);
+    let cellVotesPercentage = rows.insertCell(4);
+
+    // Insert the correspondent values to each cell
+    cellParty.innerHTML = party[i];
+    cellState.innerHTML = state[i];
+    cellSeniority.innerHTML = seniority[i];
+    cellVotesPercentage.innerHTML = votesPercentage[i];
+
+
+  }
+
+}
+
+function createTableChecked() {
+  tableCheck(fullNameArr, fullNameWebArr, partyArr, stateArr, seniorityArr, votesPercentageArr)
+}
+
+function tableCheck(fullName, url, party, state, seniority, votesPercentage) {
+
+  let stateValue = document.getElementById("state").value;
 
   let checkboxesArr = getCheckboxesValues();
+
+  let tBody = document.getElementById("senateTable");
+  tBody.innerHTML = "";
 
   for (let i = 0; i < members.length; i++) {
 
     // Check if the current member party is or not in the checkboxes values and create its row and cells if so
-    if (checkboxesArr.indexOf(party[i]) >= 0) {
+    let checkboxesFilter = (checkboxesArr.length == 0 || checkboxesArr.includes(members[i].party));
+    let dropdownFilter = (stateValue == "-All-" || stateValue == members[i].state);
+
+    if (checkboxesFilter && dropdownFilter) {
       // Create a new row
       let rows = tBody.insertRow(-1);
 
@@ -130,12 +184,12 @@ function rowsAndCellsCreator(fullName, url, party, state, seniority, votesPercen
       cellSeniority.innerHTML = seniority[i];
       cellVotesPercentage.innerHTML = votesPercentage[i];
     }
-
   }
-
 }
 
-// Get checked box values and put them into an array.
+
+
+// Get checkedboxes value and put them into an array.
 function getCheckboxesValues() {
   let checkboxesValue = [];
 
@@ -149,20 +203,29 @@ function getCheckboxesValues() {
 
 // Call the main function tableCreator() whenever a checkbox is changed
 
-function checkboxEvent() {
+// function checkboxEvent() {
 
-  let checkboxChange = document.querySelectorAll("input[name=partyCheckboxes]:checked");
+//   // let checkboxChange = document.querySelectorAll("input[name=partyCheckboxes]:checked");
 
-  checkboxChange.addEventListener("onchange", tableCreator());
-}
+//   return tableCreator();
+// }
 
+
+// function selectorEvent() {
+
+//   let selectorChange = document.getElementById("state");
+
+//   console.log(selectorChange);
+
+//   selectorChange.addEventListener("onchange", tableCreator());
+// }
 
 // Create the options for the select filter
 
 function stateSelectOptionsCreator() {
 
   // Create an array with all the states sorted
-  let stateArrNoDuplicates = [];
+  let stateArrNoDuplicates = ["-All-"];
 
   for (let i = 0; i < stateArr.length; i++) {
     if (!stateArrNoDuplicates.includes(stateArr[i])) {
@@ -170,7 +233,7 @@ function stateSelectOptionsCreator() {
     }
   }
 
-  stateArrNoDuplicates.push("-All-")
+  // stateArrNoDuplicates.push("-All-");
   let stateArrSelect = stateArrNoDuplicates.sort();
 
   // Create the option list in the HTML
