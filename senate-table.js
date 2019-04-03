@@ -53,11 +53,12 @@ function tableCheck() {
       cellVotesPercentage.innerHTML = members[i].votes_with_party_pct + "%";
     }
   }
+  // Add a text when any data match the filters
   let noData = document.getElementById("noData");
   noData.innerHTML = "";
 
-  if (tBody.rows.length == 0) {
-    noData.insertAdjacentHTML("beforeend", `<p>Sorry, any data match your request.</p>`);
+  if (tBody.rows.length == 0) { // Other option is tBody.children[0] !== null
+    noData.insertAdjacentHTML("beforeend", `<p>Sorry, any data matches your request.</p>`);
   }
   // TODO Make the noData message point with state has no data
 }
@@ -66,20 +67,12 @@ function tableCheck() {
 // Create the options for the select filter
 
 function stateSelectOptionsCreator() {
-
-  let stateArr = []; // Array holding all the States info
-
-  members.forEach(state => { // Loop to get the State of each member
-    let eachState = state.state; // Get the State
-    stateArr.push(eachState); // Push the State info to the holder array
-  });
-
-  // Create the no-duplicates array
+  // Create array holding all the states no duplicated
   let stateArrNoDuplicates = ["-All-"];
 
-  for (let i = 0; i < stateArr.length; i++) {
-    if (!stateArrNoDuplicates.includes(stateArr[i])) {
-      stateArrNoDuplicates.push(stateArr[i]);
+  for (let i = 0; i < members.length; i++) {
+    if (!stateArrNoDuplicates.includes(members[i].state)) {
+      stateArrNoDuplicates.push(members[i].state);
     }
   }
 
@@ -88,7 +81,6 @@ function stateSelectOptionsCreator() {
 
   // Create the option list in the HTML
   let targetSelect = document.getElementById("state");
-
 
   for (let i = 0; i < stateArrSelect.length; i++) {
     targetSelect.insertAdjacentHTML("beforeend", `<option value="${stateArrSelect[i]}">${stateArrSelect[i]}</option>`); // .insertAdjacentHTML parses the specified text as HTML or XML and inserts the resulting nodes into the DOM tree at a specified position.
@@ -108,7 +100,7 @@ function getCheckboxesValues() {
 
 // Call the main function tableCreator() whenever a checkbox is changed
 
-function checkboxEvent() {
+function checkboxEvent() { // TOFIX this addEventListener doesn't work
 
   let checkboxChange = document.querySelectorAll("input[name=partyCheckboxes]");
   console.log(checkboxChange);
@@ -124,29 +116,4 @@ function selectorEvent() {
   let selectorChange = document.getElementById("state");
   selectorChange.addEventListener("change", tableCheck);
 }
-
-
-
-// let makeLink = document.createElement("a");
-
-// makeLink.setAttribute("href", "https://www.alexander.senate.gov/public");
-
-// makeLink.innerHTML = "HOLAAA";
-
-// let modificar = document.getElementById("pruebaLink");
-
-// modificar.appendChild(makeLink);
-
-// let makeTR = document.createElement("tr");
-// let makeTD = document.createElement("td");
-
-// makeTD.innerHTML = "Hola";
-// makeTD.classList.add("container");
-// makeTD.innerHTML = "Hola";
-
-// makeTR.appendChild(makeTD);
-
-// let table = document.getElementById("senateData");
-
-// table.appendChild(makeTR);
 
