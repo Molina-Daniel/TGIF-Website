@@ -81,13 +81,13 @@
 				</div>
 				<div>
 					<label for="states">Select State:</label>
-					<select name="partyCheckboxes" id="state" onclick="tableCheck()">
-
+					<select name="partyCheckboxes" id="state">
 					</select>
 				</div>
 			</div>
 		</div>
 
+		<!-- TODO Make the table size static (name column size doesn't change with differents name sizes) -->
 		<div>
 			<table class="table table-bordered table-hover">
 				<thead>
@@ -103,6 +103,7 @@
 
 				</tbody>
 			</table>
+			<div id="noData" class="text-center h3 font-italic"></div>
 		</div>
 
 		<footer class="row pt-3">
