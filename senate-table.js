@@ -12,7 +12,7 @@ let votesPercentageArr = []; // Array holding all the porcentages of votes info
 let members = senateData.results[0].members;
 
 
-
+createTableChecked();
 tableCreator();
 
 
@@ -86,8 +86,8 @@ function tableCreator() {
     votesPercentageArr.push(eachVotesPct); // Push the porcentages of votes info to the holder array
   });
 
-  // rowsAndCellsCreator(fullNameArr, fullNameWebArr, partyArr, stateArr, seniorityArr, votesPercentageArr);
-  createTableChecked();
+  rowsAndCellsCreator();
+  // tableCheck();
 
   stateSelectOptionsCreator();
 }
@@ -97,7 +97,7 @@ function tableCreator() {
 
 // Create rows and cells function
 
-function rowsAndCellsCreator(fullName, url, party, state, seniority, votesPercentage) {
+function rowsAndCellsCreator() {
   let tBody = document.getElementById("senateTable");
 
   for (let i = 0; i < members.length; i++) {
@@ -114,9 +114,11 @@ function rowsAndCellsCreator(fullName, url, party, state, seniority, votesPercen
     // Create the anchor for the names
     let makeLink = document.createElement("a");
     // Insert the attribute href and the url to the anchor tag
-    makeLink.setAttribute("href", url[i]);
+    makeLink.setAttribute("href", members[i].url);
+    // Insert the attribute target blank
+    makeLink.setAttribute("target", "_blank");
     // Insert the full name text in the anchor
-    makeLink.innerHTML = fullName[i];
+    makeLink.innerHTML = members[i].first_name + " " + (members[i].middle_name || "") + " " + members[i].last_name;
     // Append the anchor tag to its cell
     cellFullName.appendChild(makeLink);
 
@@ -127,10 +129,10 @@ function rowsAndCellsCreator(fullName, url, party, state, seniority, votesPercen
     let cellVotesPercentage = rows.insertCell(4);
 
     // Insert the correspondent values to each cell
-    cellParty.innerHTML = party[i];
-    cellState.innerHTML = state[i];
-    cellSeniority.innerHTML = seniority[i];
-    cellVotesPercentage.innerHTML = votesPercentage[i];
+    cellParty.innerHTML = members[i].party;
+    cellState.innerHTML = members[i].state;
+    cellSeniority.innerHTML = members[i].seniority;
+    cellVotesPercentage.innerHTML = members[i].votes_with_party_pct + "%";
 
 
   }
@@ -138,10 +140,10 @@ function rowsAndCellsCreator(fullName, url, party, state, seniority, votesPercen
 }
 
 function createTableChecked() {
-  tableCheck(fullNameArr, fullNameWebArr, partyArr, stateArr, seniorityArr, votesPercentageArr)
+  tableCheck()
 }
 
-function tableCheck(fullName, url, party, state, seniority, votesPercentage) {
+function tableCheck() {
 
   let stateValue = document.getElementById("state").value;
 
@@ -166,9 +168,11 @@ function tableCheck(fullName, url, party, state, seniority, votesPercentage) {
       // Create the anchor for the names
       let makeLink = document.createElement("a");
       // Insert the attribute href and the url to the anchor tag
-      makeLink.setAttribute("href", url[i]);
+      makeLink.setAttribute("href", members[i].url);
+      // Insert the attribute target blank
+      makeLink.setAttribute("target", "_blank");
       // Insert the full name text in the anchor
-      makeLink.innerHTML = fullName[i];
+      makeLink.innerHTML = members[i].first_name + " " + (members[i].middle_name || "") + " " + members[i].last_name;
       // Append the anchor tag to its cell
       cellFullName.appendChild(makeLink);
 
@@ -179,10 +183,10 @@ function tableCheck(fullName, url, party, state, seniority, votesPercentage) {
       let cellVotesPercentage = rows.insertCell(4);
 
       // Insert the correspondent values to each cell
-      cellParty.innerHTML = party[i];
-      cellState.innerHTML = state[i];
-      cellSeniority.innerHTML = seniority[i];
-      cellVotesPercentage.innerHTML = votesPercentage[i];
+      cellParty.innerHTML = members[i].party;
+      cellState.innerHTML = members[i].state;
+      cellSeniority.innerHTML = members[i].seniority;
+      cellVotesPercentage.innerHTML = members[i].votes_with_party_pct + "%";
     }
   }
 }
