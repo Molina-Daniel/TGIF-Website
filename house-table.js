@@ -1,13 +1,11 @@
 "use strict"
 
-// addEventListener
-
 let members = houseData.results[0].members;
 
 // Execute the functions to build the table:
 stateSelectOptionsCreator();
 tableCheck();
-// checkboxEvent();
+checkboxEvent();
 selectorEvent();
 
 function tableCheck() {
@@ -106,17 +104,15 @@ function getCheckboxesValues() {
 }
 
 
-// function checkboxEvent() {
-
-//   let checkboxChange = document.querySelectorAll("input[name=partyCheckboxes]");
-//   console.log(checkboxChange);
-//   let checkboxChangeArr = Array.from(checkboxChange);
-//   console.log(checkboxChangeArr);
-//   let checkboxChangeVal = checkboxChangeArr.map(checkboxValue => checkboxValue.value)
-//   console.log(checkboxChangeVal);
-//   // let checkboxChange = document.getElementById("democrat");
-//   checkboxChangeVal.addEventListener("click", tableCheck);
-// }
+// Call the main function tableCreator() whenever a checkbox is changed
+function checkboxEvent() {
+  let checkboxChangeDem = document.getElementById("democrat");
+  let checkboxChangeRep = document.getElementById("republican");
+  let checkboxChangeInd = document.getElementById("independent");
+  checkboxChangeDem.addEventListener("change", tableCheck);
+  checkboxChangeRep.addEventListener("change", tableCheck);
+  checkboxChangeInd.addEventListener("change", tableCheck);
+}
 
 function selectorEvent() {
   let selectorChange = document.getElementById("state");
