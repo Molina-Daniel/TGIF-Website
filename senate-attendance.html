@@ -91,19 +91,26 @@
           <tbody id="senateAttendanceTable">
             <tr>
               <th>Democrats</th>
+              <td id="numOfDem"></td>
+              <td id="demVotPtc"></td>
             </tr>
             <tr>
               <th>Republicans</th>
+              <td id="numOfRep"></td>
+              <td id="repVotPtc"></td>
             </tr>
             <tr>
               <th>Independents</th>
+              <td id="numOfInd"></td>
+              <td id="indVotPtc"></td>
             </tr>
             <tr>
               <th>Total</th>
+              <td id="totalOfMem"></td>
+              <td id="totalVotPtc"></td>
             </tr>
           </tbody>
         </table>
-        <div id="noData" class="text-center h3 font-italic"></div>
       </div>
     </div>
 
@@ -147,18 +154,9 @@
     </footer>
   </div>
 
-  <script>
-    let statistics =
-    {
-      "Number of Democrats": "",
-      "Number of Republicans": "",
-      "Number of Independents": "",
-      "Total number": "",
-
-    }
-  </script>
   <script src="pro-congress-113-senate.js"></script>
-  <script src="senate-table.js"></script>
+  <script src="senate-statistics.js"></script>
+  <script src="senate-attendance.js"></script>
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
     crossorigin="anonymous"></script>
