@@ -5,6 +5,7 @@ let members = senateData.results[0].members;
 getPartiesData();
 tableGlance();
 leastEngagedCalc();
+mostEngagedCalc();
 
 function getPartiesData() {
   let democrats = [];
@@ -68,9 +69,29 @@ function leastEngagedCalc() {
   for (let i = 0; i < membersSortedByMissVotesPct.length; i++) {
     let member = members[i];
 
-    if (missTenPct.length <= membersSortedByMissVotesPct.length * 10 / 100) {
-      missTenPct.push(members[i]);
+    if (missTenPct.length <= membersSortedByMissVotesPct.length * 10 / 100 || member.missed_votes_pct == missTenPct[missTenPct.length - 1]) {
+      missTenPct.push(member.missed_votes_pct);
       leastEngagedTable.insertAdjacentHTML("beforeend", `
+        <tr>
+          <td><a href="${member.url}" target="_blank">${member.first_name} ${member.middle_name || ""} ${member.last_name}</a></td>
+          <td>${member.missed_votes}</td>
+          <td>${member.missed_votes_pct}</td>
+        </tr>`);
+    }
+  }
+}
+
+function mostEngagedCalc() {
+  let membersSortedByMissVotesPct = members.sort(compare);
+  let missTenPct = [];
+  let mostEngagedTable = document.getElementById("mostEngagedTable");
+
+  for (let i = 0; i < membersSortedByMissVotesPct.length; i++) {
+    let member = members[i];
+
+    if (missTenPct.length <= membersSortedByMissVotesPct.length * 10 / 100 || member.missed_votes_pct == missTenPct[missTenPct.length - 1]) {
+      missTenPct.push(member.missed_votes_pct);
+      mostEngagedTable.insertAdjacentHTML("beforeend", `
         <tr>
           <td><a href="${member.url}" target="_blank">${member.first_name} ${member.middle_name || ""} ${member.last_name}</a></td>
           <td>${member.missed_votes}</td>
