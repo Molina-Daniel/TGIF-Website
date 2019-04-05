@@ -1,4 +1,4 @@
-var senateData =
+var data =
 {
   "status": "OK",
   "copyright": " Copyright (c) 2019 Pro Publica Inc. All Rights Reserved.",

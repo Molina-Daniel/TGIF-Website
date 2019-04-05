@@ -1,6 +1,6 @@
 'use strict'
 
-let members = senateData.results[0].members;
+let members = data.results[0].members;
 
 getPartiesData();
 tableGlance();

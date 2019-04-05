@@ -1,6 +1,6 @@
 'use strict'
 
-let members = houseData.results[0].members;
+let members = data.results[0].members;
 
 getPartiesData();
 tableGlance();
@@ -100,6 +100,47 @@ function mostEngagedCalc() {
     }
   }
 }
+
+
+
+// function leastEngagedCalc() {
+//   let missVotArr = [];
+
+//   for (let i = 0; i < members.length; i++) {
+//     missVotArr.push(members[i].missed_votes_pct);
+//   };
+
+//   let missVotSort = missVotArr.sort((a, b) => a - b).reverse();
+//   let missTenPct = [];
+
+//   for (let i = 0; i < members.length; i++) {
+//     let leastEngagedTable = document.getElementById("leastEngagedTable");
+//     // let isInTenPct = member.missed_votes_pct.includes(missVotArr);
+//     // let tenPctCondition = ((missTenPct.length <= (members.length * (10 / 100))) || members[i].missed_votes_pct == missTenPct[missTenPct.length - 1]);
+
+//     if (missTenPct.length <= (members.length * (10 / 100))) {
+//       for (let j = 0; j < members.length; j++) {
+//         let member = members[j];
+
+//         if ((member.missed_votes_pct == missVotSort[i]) || members[i].missed_votes_pct == missTenPct[missTenPct.length - 1]) {
+//           missTenPct.push(member);
+
+//           leastEngagedTable.insertAdjacentHTML("beforeend", `
+//             <tr>
+//               <td><a href="${member.url}" target="_blank">${member.first_name} ${member.middle_name ||
+//             ""} ${member.last_name}</a></td>
+//               <td>${member.missed_votes}</td>
+//               <td>${member.missed_votes_pct}</td>
+//             </tr>`);
+//         }
+//       }
+//     }
+//   }
+// }
+
+
+
+
 
 
 
