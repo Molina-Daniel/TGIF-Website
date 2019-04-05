@@ -86,19 +86,26 @@
           <tbody id="senateAttendanceTable">
             <tr>
               <th>Democrats</th>
+              <td id="numOfDem"></td>
+              <td id="demVotPtc"></td>
             </tr>
             <tr>
               <th>Republicans</th>
+              <td id="numOfRep"></td>
+              <td id="repVotPtc"></td>
             </tr>
             <tr>
               <th>Independents</th>
+              <td id="numOfInd"></td>
+              <td id="indVotPtc"></td>
             </tr>
             <tr>
               <th>Total</th>
+              <td id="totalOfMem"></td>
+              <td id="totalVotPtc"></td>
             </tr>
           </tbody>
         </table>
-        <div id="noData" class="text-center h3 font-italic"></div>
       </div>
     </div>
 
@@ -113,7 +120,7 @@
               <th>% Party Votes</th>
             </tr>
           </thead>
-          <tbody id="senateTable">
+          <tbody id="leastLoyalTable">
 
           </tbody>
         </table>
@@ -128,41 +135,25 @@
               <th>% Party Votes</th>
             </tr>
           </thead>
-          <tbody id="senateTable">
+          <tbody id="mostLoyalTable">
 
           </tbody>
         </table>
       </div>
     </div>
 
-    <footer class="row pt-3">
-      <div class="col-12 text-center text-muted py-3 my-3 border">
-        <p class="m-0">&copy; 2019 TGIF | All Rights Reserved</p>
-      </div>
-    </footer>
-  </div>
-
-  <script>
-    let statistics =
-    {
-      "Number of Democrats": "",
-      "Number of Republicans": "",
-      "Number of Independents": "",
-      "Total number": "",
-
-    }
-  </script>
-  <script src="pro-congress-113-senate.js"></script>
-  <script src="senate-table.js"></script>
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-    crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-    crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-    crossorigin="anonymous"></script>
+    <script src="pro-congress-113-senate.js"></script>
+    <script src="senate-statistics.js"></script>
+    <script src="party-loyalty.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"></script>
 </body>
 
 </html>
