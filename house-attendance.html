@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <title>Senate Attendance</title>
+  <title>House Attendance</title>
 </head>
 
 <body>
@@ -45,14 +45,14 @@
               aria-expanded="false">Attendance</a>
             <div class="dropdown-menu">
               <a class="dropdown-item" href="senate-attendance.html">Senate</a>
-              <a class="dropdown-item" href="house-attendance.html">House</a>
+              <a class="dropdown-item" href="#">House</a>
             </div>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
               aria-expanded="false">Party Loyalty</a>
             <div class="dropdown-menu">
-              <a class="dropdown-item" href="#">Senate</a>
+              <a class="dropdown-item" href="senate-party-loyalty.html">Senate</a>
               <a class="dropdown-item" href="house-party-loyalty.html">House</a>
             </div>
           </li>
@@ -68,10 +68,15 @@
     <!--Table container-->
     <div class="row">
       <div class="col-6">
-        <h2 class="h3">Party Loyalty</h2>
-        <p class="text-justify">Those who consider themselves to be strong partisans, strong Democrats and strong
-          Republicans respectively, tend to be the most faithful in voting for their party's nominee for office and
-          legislation that backs their party's agenda.</p>
+        <h2 class="h3">Attendance</h2>
+        <p class="text-justify">The Constitution specifies that a majority of members constitutes a quorum to do
+          business in each house. Representatives and senators rarely force the presence of a quorum by demanding quorum
+          calls; thus, in most cases, debates continue even if a majority is not present.</p>
+        <p class="text-justify">The Senate uses roll-call votes; a clerk calls out the names of all the senators, each
+          senator stating "aye" or "no" when his or her name is announced. The House reserves roll-call votes for the
+          most formal matters, as a roll-call of all 435 representatives takes quite some time; normally, members vote
+          by electronic device. In the case of a tie, the motion in question fails. In the Senate, the Vice President
+          may (if present) cast the tiebreaking vote.</p>
       </div>
       <div class="col-6">
         <h2 class="h3">Senate at a glance</h2>
@@ -86,49 +91,56 @@
           <tbody id="senateAttendanceTable">
             <tr>
               <th>Democrats</th>
+              <td id="numOfDem"></td>
+              <td id="demVotPtc"></td>
             </tr>
             <tr>
               <th>Republicans</th>
+              <td id="numOfRep"></td>
+              <td id="repVotPtc"></td>
             </tr>
             <tr>
               <th>Independents</th>
+              <td id="numOfInd"></td>
+              <td id="indVotPtc"></td>
             </tr>
             <tr>
               <th>Total</th>
+              <td id="totalOfMem"></td>
+              <td id="totalVotPtc"></td>
             </tr>
           </tbody>
         </table>
-        <div id="noData" class="text-center h3 font-italic"></div>
       </div>
     </div>
 
     <div class="row">
       <div class="col-6">
-        <h2 class="h3">Least Loyal (Bottom 10% of Party)</h2>
+        <h2 class="h3">Least Engaged (Bottom 10% Attendance)</h2>
         <table class="table table-bordered table-hover">
           <thead>
             <tr>
               <th>Senator</th>
-              <th>Number Party Votes</th>
-              <th>% Party Votes</th>
+              <th>Number of Missed Votes</th>
+              <th>% Missed</th>
             </tr>
           </thead>
-          <tbody id="senateTable">
+          <tbody id="leastEngagedTable">
 
           </tbody>
         </table>
       </div>
       <div class="col-6">
-        <h2 class="h3">Most Loyal (Top 10% of Party)</h2>
+        <h2 class="h3">Most Engaged (Top 10% Attendance)</h2>
         <table class="table table-bordered table-hover">
           <thead>
             <tr>
               <th>Senator</th>
-              <th>Number Party Votes</th>
-              <th>% Party Votes</th>
+              <th>Number of Missed Votes</th>
+              <th>% Missed</th>
             </tr>
           </thead>
-          <tbody id="senateTable">
+          <tbody id="mostEngagedTable">
 
           </tbody>
         </table>
@@ -142,18 +154,9 @@
     </footer>
   </div>
 
-  <script>
-    let statistics =
-    {
-      "Number of Democrats": "",
-      "Number of Republicans": "",
-      "Number of Independents": "",
-      "Total number": "",
-
-    }
-  </script>
-  <script src="pro-congress-113-senate.js"></script>
-  <script src="senate-table.js"></script>
+  <script src="pro-congress-113-house.js"></script>
+  <script src="house-statistics.js"></script>
+  <script src="house-attendance.js"></script>
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
     crossorigin="anonymous"></script>
