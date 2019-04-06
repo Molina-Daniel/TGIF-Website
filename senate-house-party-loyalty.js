@@ -38,8 +38,28 @@ function getPartiesData() {
 
   statistics.democrats_pct = demTotalVotes / democrats.length;
   statistics.republicans_pct = repTotalVotes / republicans.length;
-  statistics.independents_pct = indTotalVotes / independents.length;
-  statistics.total_pct = ((demTotalVotes / democrats.length) + (repTotalVotes / republicans.length) + (indTotalVotes / independents.length)) / 3;
+
+  if (indTotalVotes != 0) {
+    statistics.independents_pct = indTotalVotes / independents.length;
+  } else {
+    statistics.independents_pct = 0;
+  }
+
+  let totalPct = 0;
+  let counter = 0;
+  if (statistics.democrats_pct != 0) {
+    totalPct += (demTotalVotes / democrats.length);
+    counter += 1;
+  }
+  if (statistics.republicans_pct != 0) {
+    totalPct += (repTotalVotes / republicans.length);
+    counter += 1;
+  }
+  if (statistics.independents_pct != 0) {
+    totalPct += (indTotalVotes / independents.length);
+    counter += 1;
+  }
+  statistics.total_pct = totalPct / counter;
 }
 
 function tableGlance() {
@@ -50,8 +70,18 @@ function tableGlance() {
 
   document.getElementById("demVotPtc").innerHTML = Math.round(statistics.democrats_pct * 100) / 100;
   document.getElementById("repVotPtc").innerHTML = Math.round(statistics.republicans_pct * 100) / 100;
-  document.getElementById("indVotPtc").innerHTML = Math.round(statistics.independents_pct * 100) / 100;
-  document.getElementById("totalVotPtc").innerHTML = Math.round(statistics.total_pct * 100) / 100;
+
+  if (isNaN(statistics.independents_pct)) {
+    document.getElementById("indVotPtc").innerHTML = 0;
+  } else {
+    document.getElementById("indVotPtc").innerHTML = Math.round(statistics.independents_pct * 100) / 100;
+  }
+
+  if (isNaN(statistics.total_pct)) {
+    document.getElementById("totalVotPtc").innerHTML = 0;
+  } else {
+    document.getElementById("totalVotPtc").innerHTML = Math.round(statistics.total_pct * 100) / 100;
+  }
 }
 
 
@@ -102,8 +132,6 @@ function mostLoyalCalc() {
     }
   }
 }
-
-
 
 
 
