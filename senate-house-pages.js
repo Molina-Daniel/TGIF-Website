@@ -1,32 +1,43 @@
 'use strict'
 
 let members;
+let url;
 
-fetch('https://api.propublica.org/congress/v1/113/senate/members.json', {
-  method: 'GET',
-  headers: {
-    'X-API-Key': 's3rUR0pNj1b3rAUOxF3Yt50ZRnneSpkQ11lVTwiq'
-  },
-})
-  .then(function (response) {
-    if (!response.ok) {
-      throw Error(response.statusText);
-    }
-    // Read the response as json.
-    return response.json();
+apiToLoad();
+
+function apiToLoad() {
+  if (document.URL == "http://localhost:8000/senate-page.html") {
+    url = "https://api.propublica.org/congress/v1/113/senate/members.json";
+  } else {
+    url = "https://api.propublica.org/congress/v1/113/house/members.json"
+  }
+
+  fetch(url, {
+    method: 'GET',
+    headers: {
+      'X-API-Key': 's3rUR0pNj1b3rAUOxF3Yt50ZRnneSpkQ11lVTwiq'
+    },
   })
-  .then(function (responseAsJson) {
-    // Do stuff with the JSON
-    members = responseAsJson.results[0].members;
-    // Execute the functions to build the table:
-    stateSelectOptionsCreator();
-    tableCheck();
-    checkboxEvent();
-    selectorEvent();
-  })
-  .catch(function (error) {
-    console.log('Looks like there was a problem: \n', error);
-  });
+    .then(function (response) {
+      if (!response.ok) {
+        throw Error(response.statusText);
+      }
+      // Read the response as json.
+      return response.json();
+    })
+    .then(function (responseAsJson) {
+      // Do stuff with the JSON
+      members = responseAsJson.results[0].members;
+      // Execute the functions to build the table:
+      stateSelectOptionsCreator();
+      tableCheck();
+      checkboxEvent();
+      selectorEvent();
+    })
+    .catch(function (error) {
+      console.log('Looks like there was a problem: \n', error);
+    });
+}
 
 
 function tableCheck() {
