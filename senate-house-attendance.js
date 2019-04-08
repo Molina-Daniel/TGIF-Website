@@ -58,7 +58,6 @@ function getPartiesData() {
     counter += 1;
   }
   statistics.total_pct = totalPct / counter;
-  // statistics.total_pct = ((demTotalVotes / democrats.length) + (repTotalVotes / republicans.length) + (indTotalVotes / independents.length)) / 3;
 }
 
 function tableGlance() {
