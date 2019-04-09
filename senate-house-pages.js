@@ -1,15 +1,21 @@
 'use strict'
 
 let members;
-let url;
 
 apiToLoad();
 
 function apiToLoad() {
-  if (document.URL == "http://localhost:8000/senate-page.html") {
-    url = "https://api.propublica.org/congress/v1/113/senate/members.json";
+  let senatePage = "http://localhost:8000/senate-page.html"
+  let senateAttendancePage = "http://localhost:8000/senate-attendance.html"
+  let senatePartyLoyaltyPage = "http://localhost:8000/senate-party-loyalty.html"
+  let senateUrl = "https://api.propublica.org/congress/v1/113/senate/members.json";
+  let houseUrl = "https://api.propublica.org/congress/v1/113/house/members.json";
+  let url;
+
+  if (document.URL == senatePage || document.URL == senateAttendancePage || document.URL == senatePartyLoyaltyPage) {
+    url = senateUrl;
   } else {
-    url = "https://api.propublica.org/congress/v1/113/house/members.json"
+    url = houseUrl;
   }
 
   fetch(url, {

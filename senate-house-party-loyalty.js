@@ -68,20 +68,21 @@ function tableGlance() {
   document.getElementById("numOfInd").innerHTML = statistics.number_of_independents;
   document.getElementById("totalOfMem").innerHTML = statistics.total_members;
 
-  document.getElementById("demVotPtc").innerHTML = Math.round(statistics.democrats_pct * 100) / 100;
-  document.getElementById("repVotPtc").innerHTML = Math.round(statistics.republicans_pct * 100) / 100;
+  document.getElementById("demVotPtc").innerHTML = statistics.democrats_pct.toFixed(2);
+  document.getElementById("repVotPtc").innerHTML = statistics.republicans_pct.toFixed(2);
 
   if (isNaN(statistics.independents_pct)) {
     document.getElementById("indVotPtc").innerHTML = 0;
   } else {
-    document.getElementById("indVotPtc").innerHTML = Math.round(statistics.independents_pct * 100) / 100;
+    document.getElementById("indVotPtc").innerHTML = statistics.independents_pct.toFixed(2);
   }
 
   if (isNaN(statistics.total_pct)) {
     document.getElementById("totalVotPtc").innerHTML = 0;
   } else {
-    document.getElementById("totalVotPtc").innerHTML = Math.round(statistics.total_pct * 100) / 100;
+    document.getElementById("totalVotPtc").innerHTML = statistics.total_pct.toFixed(2);
   }
+
 }
 
 
