@@ -93,7 +93,7 @@ function tableCheck() {
   let noData = document.getElementById("noData");
   noData.innerHTML = "";
 
-  if (tBody.rows.length == 0) { // Other option is tBody.children[0] !== null
+  if (tBody.rows.length == 0) { // Other option is (tBody.children[0] !== null)
     noData.insertAdjacentHTML("beforeend", `<p>Sorry, any data matches your request.</p>`);
   }
   // TODO Make the noData message point with state has no data
