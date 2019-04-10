@@ -146,7 +146,9 @@
 					</tr>
 				</tbody>
 			</table>
-			<div id="noData" class="text-center h3 font-italic"></div>
+			<div v-if="!filteredTable.length" id="noData" class="text-center h3 font-italic">
+				<p>Sorry, any data matches your request.</p>
+			</div>
 		</div>
 
 		<footer class="row pt-3">

@@ -71,7 +71,7 @@ let app = new Vue({
         return checkboxesFilter && dropdownFilter;
       })
     },
-    
+
   },
   methods: {
     fetchData() {
@@ -104,5 +104,6 @@ let app = new Vue({
           console.log('Looks like there was a problem: \n', error);
         });
     },
+
   },
 })
