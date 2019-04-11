@@ -91,23 +91,23 @@
           <tbody id="senateAttendanceTable">
             <tr>
               <th>Democrats</th>
-              <td id="numOfDem"></td>
-              <td id="demVotPtc"></td>
+              <td>{{ democrats.length }}</td>
+              <td>{{ demTotalVotes }}</td>
             </tr>
             <tr>
               <th>Republicans</th>
-              <td id="numOfRep"></td>
-              <td id="repVotPtc"></td>
+              <td>{{ republicans.length }}</td>
+              <td>{{ repTotalVotes }}</td>
             </tr>
             <tr>
               <th>Independents</th>
-              <td id="numOfInd"></td>
-              <td id="indVotPtc"></td>
+              <td>{{ independents.length }}</td>
+              <td>{{ indTotalVotes }}</td>
             </tr>
             <tr>
               <th>Total</th>
-              <td id="totalOfMem"></td>
-              <td id="totalVotPtc"></td>
+              <td>{{ democrats.length + republicans.length + independents.length }}</td>
+              <td>{{ totalVotes }}</td>
             </tr>
           </tbody>
         </table>
@@ -155,9 +155,12 @@
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
-  <script src="pro-congress-113-senate.js"></script>
-  <script src="senate-house-statistics.js"></script>
-  <script src="senate-house-attendance.js"></script>
+  <!-- <script src="pro-congress-113-senate.js"></script> -->
+  <!-- <script src="senate-house-statistics.js"></script> -->
+  <!-- <script src="senate-house-attendance.js"></script> -->
+  <script src="main.js"></script>
+
+  <!-- Bootstrap -->
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
     crossorigin="anonymous"></script>
