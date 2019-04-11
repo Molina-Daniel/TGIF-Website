@@ -52,19 +52,20 @@ let app = new Vue({
     members: [],
     checkedParty: [],
     selectedState: ["All"],
-    // totalDem: [],
-    // totalRep: [],
-    // totalInd: [],
-
+    leastEngaged: [],
+    mostEngaged: [],
   },
   created() {
     this.fetchData();
   },
+  // mounted() {
+  //   this.leastEngagedTable();
+  // },
   computed: {
-    states() {
+    states() { // Get all the states w/o repeats
       return new Set(this.members.map(member => member.state).sort())
     },
-    filteredTable() {
+    filteredTable() { // Make the filters work
       if (!this.checkedParty.length && this.selectedState == "All") {
         return this.members
       }
@@ -75,30 +76,46 @@ let app = new Vue({
         return checkboxesFilter && dropdownFilter;
       })
     },
-    democrats() {
+    democrats() { // Total Democrats
       return this.members.filter(member => member.party == "D")
     },
-    republicans() {
+    republicans() { // Total Republicans
       return this.members.filter(member => member.party == "R")
     },
-    independents() {
+    independents() { // Total Independents
       return this.members.filter(member => member.party == "I")
     },
-    demTotalVotes() { //Condiciones no funciona??
+    demTotalVotes() { //Condiciones no funciona?? Total Democrats votes
       return (this.democrats.map(member => member.votes_with_party_pct).reduce((total, num) => total + num) / this.democrats.length).toFixed(2)
       // if (this.members.filter(member => member.party == "D")) {
       //   return this.members.map(member => member.votes_with_party_pct)//.reduce((total, num) => total + num)
       // }
     },
-    repTotalVotes() {
+    repTotalVotes() { // Total Republicans votes
       return (this.republicans.map(member => member.votes_with_party_pct).reduce((total, num) => total + num) / this.republicans.length).toFixed(2)
     },
-    indTotalVotes() {
+    indTotalVotes() { // Total Independents
       return (this.independents.map(member => member.votes_with_party_pct).reduce((total, num) => total + num) / this.independents.length).toFixed(2)
     },
-    totalVotes() {
+    totalVotes() { // Total Votes
       return (this.members.map(member => member.votes_with_party_pct).reduce((total, num) => total + num) / this.members.length).toFixed(2)
     },
+    leastEngagedTable() {
+      return this.leastEngaged = this.members.sort(this.compare).reverse().slice(0, this.members.length * 10 / 100)
+      // let missTenPct = [];
+      // if (missTenPct.length <= this.leastEngagedCalc.length * 10 / 100 || this.members.missed_votes_pct == missTenPct[missTenPct.length - 1]) {
+      //   missTenPct.push(this.members.missed_votes_pct);
+      //   this.members.sort(this.compare).reverse();
+      // }
+      // return this.leastEngagedCalc.forEach(function (member) {
+      //   if (this.missTenPct.length <= this.leastEngagedCalc.length * 10 / 100 || member.missed_votes_pct == this.missTenPct[this.missTenPct.length - 1]) {
+      //     this.missTenPct.push(member);
+      // this.members.sort(this.compare).reverse();
+    },
+    mostEngagedTable() {
+      return this.mostEngaged = this.members.sort(this.compare).slice(0, this.members.length * 10 / 100)
+    },
+    
   },
   methods: {
     fetchData() {
@@ -131,7 +148,16 @@ let app = new Vue({
           console.log('Looks like there was a problem: \n', error);
         });
     },
-
+    compare(a, b) {
+      if (a.missed_votes_pct < b.missed_votes_pct)
+        return -1;
+      if (a.missed_votes_pct > b.missed_votes_pct)
+        return 1;
+      return 0;
+    },
+    // leastEngagedCalc() {
+    //   return this.members.sort(this.compare).reverse()
+    // },
   },
 })
 
