@@ -52,15 +52,15 @@ let app = new Vue({
     members: [],
     checkedParty: [],
     selectedState: ["All"],
-    leastEngaged: [],
-    mostEngaged: [],
     demTotalVotes: null,
     repTotalVotes: null,
     indTotalVotes: null,
     totalVotes: null,
-    // democrats: [],
-    // republicans: [],
-    // independents: [],
+    leastEngaged: [],
+    mostEngaged: [],
+    leastLoyal: [],
+    mostLoyal: [],
+
   },
   created() {
     this.fetchData();
@@ -92,8 +92,6 @@ let app = new Vue({
     independents() { // Total Independents
       return this.members.filter(member => member.party == "I")
     },
-
-
 
   },
   methods: {
@@ -128,15 +126,24 @@ let app = new Vue({
           this.totalVots()
           this.mostEngagedTable()
           this.leastEngagedTable()
+          this.leastLoyalTable()
+          this.mostLoyalTable()
         })
         .catch(function (error) {
           console.log('Looks like there was a problem: \n', error);
         });
     },
-    compare(a, b) {
+    compareAttendance(a, b) {
       if (a.missed_votes_pct < b.missed_votes_pct)
         return -1;
       if (a.missed_votes_pct > b.missed_votes_pct)
+        return 1;
+      return 0;
+    },
+    compareLoyalty(a, b) {
+      if (a.votes_with_party_pct < b.votes_with_party_pct)
+        return -1;
+      if (a.votes_with_party_pct > b.votes_with_party_pct)
         return 1;
       return 0;
     },
@@ -147,20 +154,27 @@ let app = new Vue({
       this.repTotalVotes = (this.republicans.map(member => member.votes_with_party_pct).reduce((total, num) => total + num) / this.republicans.length).toFixed(2)
     },
     indTotVots() { // Total Independents
-      this.indTotalVotes = (this.independents.map(member => member.votes_with_party_pct).reduce((total, num) => total + num) / this.independents.length).toFixed(2)
+      if (this.independents.length > 0) {
+        this.indTotalVotes = (this.independents.map(member => member.votes_with_party_pct).reduce((total, num) => total + num) / this.independents.length).toFixed(2)
+      } else {
+        this.indTotalVotes = 0
+      }
     },
     totalVots() { // Total Votes
       this.totalVotes = (this.members.map(member => member.votes_with_party_pct).reduce((total, num) => total + num) / this.members.length).toFixed(2)
     },
     leastEngagedTable() {
-      this.leastEngaged = this.members.sort(this.compare).reverse().slice(0, this.members.length * 10 / 100)
+      this.leastEngaged = this.members.sort(this.compareAttendance).reverse().slice(0, this.members.length * 10 / 100)
     },
     mostEngagedTable() {
-      this.mostEngaged = this.members.sort(this.compare).slice(0, this.members.length * 10 / 100)
+      this.mostEngaged = this.members.sort(this.compareAttendance).slice(0, this.members.length * 10 / 100)
     },
-    // leastEngagedCalc() {
-    //   return this.members.sort(this.compare).reverse()
-    // },
+    leastLoyalTable() {
+      this.leastLoyal = this.members.sort(this.compareLoyalty).slice(0, this.members.length * 10 / 100)
+    },
+    mostLoyalTable() {
+      this.mostLoyal = this.members.sort(this.compareLoyalty).reverse().slice(0, this.members.length * 10 / 100)
+    },
   },
 })
 
