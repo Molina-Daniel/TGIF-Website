@@ -7,11 +7,17 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css">
   <title>Senate Attendance</title>
 </head>
 
 <body>
   <div class="container py-3" id="app">
+
+    <div v-if="members.length == 0" class="loader">
+      <img class="block" src="img/tenor.gif" alt="Loading..." />
+      <p class="font-weight-bold font-italic">Fetching data from the servers...</p>
+    </div>
 
     <div class="row pt-3">
       <div class="col-4">
