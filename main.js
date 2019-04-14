@@ -1,5 +1,6 @@
 'use strict'
 
+carousel();
 
 let app = new Vue({
   el: "#app",
@@ -131,4 +132,9 @@ let app = new Vue({
   },
 })
 
+
+function carousel() {
+  let carousel = document.getElementById("carouselHome");
+  interval: 2000;
+}
 
