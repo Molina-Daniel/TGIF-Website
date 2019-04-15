@@ -8,6 +8,7 @@ let app = new Vue({
     members: [],
     checkedParty: [],
     selectedState: "All",
+    searchByName: "",
     demTotalVotes: null,
     repTotalVotes: null,
     indTotalVotes: null,
@@ -27,15 +28,28 @@ let app = new Vue({
       return new Set(this.members.map(member => member.state).sort())
     },
     filteredTable() { // Make the filters work
-      if (!this.checkedParty.length && this.selectedState == "All") {
+      if (!this.checkedParty.length && this.selectedState == "All" && this.searchByName == "") {
         return this.members
       }
       // "this" only works with arrow function. For regular functions we'd have to target the variables in data with "app.variableName" because "this" is out of the scope
       return this.members.filter((member) => {
         let checkboxesFilter = (!this.checkedParty.length || this.checkedParty.includes(member.party));
         let dropdownFilter = (this.selectedState == "All" || this.selectedState == member.state);
-        return checkboxesFilter && dropdownFilter;
+        let searchFilter = (this.searchByName == "" || member.first_name.includes(this.searchByName) || member.last_name.includes(this.searchByName));
+        return checkboxesFilter && dropdownFilter && searchFilter;
       })
+    },
+    searchFilter() {
+      // if (!this.checkedParty.length && this.selectedState == "All" && this.searchByName == "") {
+      //   return this.members
+      // }
+      // // "this" only works with arrow function. For regular functions we'd have to target the variables in data with "app.variableName" because "this" is out of the scope
+      // return this.members.filter((member) => {
+      //   let checkboxesFilter = (!this.checkedParty.length || this.checkedParty.includes(member.party));
+      //   let dropdownFilter = (this.selectedState == "All" || this.selectedState == member.state);
+      //   let searchFilter = (this.searchByName == "" || member.first_name.includes(this.searchByName));
+      //   return checkboxesFilter && dropdownFilter && searchFilter;
+      // })
     },
     democrats() { // Total Democrats
       return this.members.filter(member => member.party == "D")

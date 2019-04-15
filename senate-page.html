@@ -120,7 +120,7 @@
 		<div class="row mt-3 mx-3">
 			<div class="col-12 border form-group">
 				<div class="row justify-content-between filter">
-					<div class="col-6 text-center">
+					<div class="col-4 text-center">
 						<p class="font-weight-bold">Filter by Party:</p>
 						<div class="form-check form-check-inline">
 							<input v-model="checkedParty" type="checkbox" name="partyCheckboxes" id="democrat" value="D">
@@ -135,7 +135,7 @@
 							<label class="m-0" for="independent">Independent</label>
 						</div>
 					</div>
-					<div class="col-6 text-center">
+					<div class="col-4 text-center">
 						<p class="font-weight-bold">Filter by State:</p>
 						<div>
 							<label for="states">Select State:</label>
@@ -143,6 +143,12 @@
 								<option value="All">- All -</option>
 								<option v-for="state in states" v-bind:value="state">{{ state }}</option>
 							</select>
+						</div>
+					</div>
+					<div class="col-4 text-center">
+						<p class="font-weight-bold">Filter by Name:</p>
+						<div>
+							<input v-model="searchByName" type="text" name="search" id="search" placeholder="Write the name here">
 						</div>
 					</div>
 				</div>
