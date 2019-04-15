@@ -21,7 +21,8 @@ let app = new Vue({
   created() {
     this.fetchData();
   },
-  computed: {
+  computed: { // Es una mezcla entre una variable y una funcion. Es una variable que se auto-ejecuta. Cada vez que cambia alguno de sus valores se auto-calcula de nuevo
+
     states() { // Get all the states w/o repeats
       return new Set(this.members.map(member => member.state).sort())
     },
