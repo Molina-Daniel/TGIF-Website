@@ -7,37 +7,40 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+    integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
   <link rel="stylesheet" href="style.css">
-  <title>Senate Attendance</title>
+  <title>Senate Party Loyalty</title>
 </head>
 
 <body>
-  <div class="container py-3" id="app">
+  <div class="container py-3 wrapper" id="app">
 
     <div v-if="members.length == 0" class="loader">
       <img class="block" src="img/tenor.gif" alt="Loading..." />
-      <p class="font-weight-bold font-italic">Fetching data from the servers...</p>
+      <!-- <p class="font-weight-bold font-italic">Fetching data from the servers...</p> -->
     </div>
 
-    <div class="row pt-3">
-      <div class="col-4">
-        <a href="home.html"><img src="img/e442323fb4db46a2df110f6724ac597a.jpg" alt=""></a>
+    <header class="row pt-3">
+      <div class="col-sm-4 text-center align-self-center">
+        <a class="" href="#"><img class="imgLogo img-fluid" src="img/27750690_796277473909261_1454095537477120106_n.png"
+            alt=""></a>
       </div>
-      <div class="col-8">
+      <div class="col-sm-8">
         <div class="row h-75 align-items-center">
           <h1 class="w-100 text-center">Transparent Government in Fact</h1>
         </div>
         <div class="row h-25 justify-content-end">
-          <a class="align-self-end pr-3" href="mailto:dmolcap&#64;gmail.com">info&#64;tgif.net</a>
+          <a class="align-self-end pr-3 text-dark" href="mailto:dmolcap&#64;gmail.com">Contact: info&#64;tgif.net <i
+              class="fas fa-envelope-square"></i></a>
         </div>
-      </div>
-    </div>
+    </header>
 
     <div class="row pt-3">
-      <nav class="col-12 navbar">
+      <nav class="col-sm-12 navbar">
         <ul class="nav border w-100">
           <li class="nav-item">
-            <a class="nav-link active" href="home.html">Home</a></li>
+            <a class="nav-link" href="home.html">Home</a></li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
               aria-expanded="false">Congress 113</a>
@@ -66,94 +69,117 @@
       </nav>
     </div>
 
-
-    <header>
-      <div>
-      </div>
-    </header>
     <!--Table container-->
     <div class="row">
-      <div class="col-6">
-        <h2 class="h3">Party Loyalty</h2>
-        <p class="text-justify">Those who consider themselves to be strong partisans, strong Democrats and strong
-          Republicans respectively, tend to be the most faithful in voting for their party's nominee for office and
-          legislation that backs their party's agenda.</p>
-      </div>
-      <div class="col-6">
-        <h2 class="h3">Senate at a glance</h2>
-        <table class="table table-bordered table-hover">
-          <thead>
-            <tr>
-              <th>Party</th>
-              <th>No. of Reps</th>
-              <th>% of Voted w/ Party</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th>Democrats</th>
-              <td>{{ democrats.length }}</td>
-              <td>{{ demTotalVotes }}</td>
-            </tr>
-            <tr>
-              <th>Republicans</th>
-              <td>{{ republicans.length }}</td>
-              <td>{{ repTotalVotes }}</td>
-            </tr>
-            <tr>
-              <th>Independents</th>
-              <td>{{ independents.length }}</td>
-              <td>{{ indTotalVotes }}</td>
-            </tr>
-            <tr>
-              <th>Total</th>
-              <td>{{ democrats.length + republicans.length + independents.length }}</td>
-              <td>{{ totalVotes }}</td>
-            </tr>
-          </tbody>
-        </table>
+      <div class="col-md-12">
+        <div class="card text-center">
+          <div class="card-header senatorsCardHeader">
+            <ul class="nav nav-tabs card-header-tabs">
+              <li class="nav-item">
+                <a class="nav-link active" href="#">Senate</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link inactive" href="house-party-loyalty.html">House</a>
+              </li>
+            </ul>
+          </div>
+          <div class="row">
+            <div class="col-md-6 card-body">
+              <h2 class="card-title text-left font-weight-bold senatorsText">Party Loyalty</h2>
+              <p class="card-text text-justify m-0 senatorsText">Those who consider themselves to be strong partisans,
+                strong Democrats and strong
+                Republicans respectively, tend to be the most faithful in voting for their party's nominee for office
+                and
+                legislation that backs their party's agenda.</p>
+            </div>
+            <div class="col-md-6 card-body align-self-center">
+              <h2 class="card-title text-left font-weight-bold senatorsText">Senate at a glance</h2>
+              <table class="table table-bordered table-hover">
+                <thead>
+                  <tr>
+                    <th>Party</th>
+                    <th>No. of Reps</th>
+                    <th>% of Voted w/ Party</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th>Democrats</th>
+                    <td>{{ democrats.length }}</td>
+                    <td>{{ demTotalVotes }}</td>
+                  </tr>
+                  <tr>
+                    <th>Republicans</th>
+                    <td>{{ republicans.length }}</td>
+                    <td>{{ repTotalVotes }}</td>
+                  </tr>
+                  <tr>
+                    <th>Independents</th>
+                    <td>{{ independents.length }}</td>
+                    <td>{{ indTotalVotes }}</td>
+                  </tr>
+                  <tr>
+                    <th>Total</th>
+                    <td>{{ democrats.length + republicans.length + independents.length }}</td>
+                    <td>{{ totalVotes }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 card-body">
+              <h2 class="card-title text-left font-weight-bold senatorsText">Least Loyal (Bottom 10% of Party)</h2>
+              <table class="table table-bordered table-hover">
+                <thead>
+                  <tr>
+                    <th>Senator</th>
+                    <th>No. of Party Votes</th>
+                    <th>% Party Votes</th>
+                  </tr>
+                </thead>
+                <tbody v-for="member in leastLoyal">
+                  <td><a class="text-dark" v-bind:href="member.url" target="_blank">{{ member.first_name }}
+                      {{ member.middle_name }}
+                      {{ member.last_name }}</a></td>
+                  <td>{{ Math.round((member.votes_with_party_pct / 100) * member.total_votes) }}</td>
+                  <td>{{ member.votes_with_party_pct }}</td>
+                </tbody>
+              </table>
+            </div>
+            <div class="col-md-6 card-body">
+              <h2 class="card-title text-left font-weight-bold senatorsText">Most Loyal (Top 10% of Party)</h2>
+              <table class="table table-bordered table-hover">
+                <thead>
+                  <tr>
+                    <th>Senator</th>
+                    <th>No. of Party Votes</th>
+                    <th>% Party Votes</th>
+                  </tr>
+                </thead>
+                <tbody v-for="member in mostLoyal">
+                  <td><a class="text-dark" v-bind:href="member.url" target="_blank">{{ member.first_name }}
+                      {{ member.middle_name }}
+                      {{ member.last_name }}</a></td>
+                  <td>{{ Math.round((member.votes_with_party_pct / 100) * member.total_votes) }}</td>
+                  <td>{{ member.votes_with_party_pct }}</td>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
-    <div class="row">
-      <div class="col-6">
-        <h2 class="h3">Least Loyal (Bottom 10% of Party)</h2>
-        <table class="table table-bordered table-hover">
-          <thead>
-            <tr>
-              <th>Senator</th>
-              <th>Number Party Votes</th>
-              <th>% Party Votes</th>
-            </tr>
-          </thead>
-          <tbody v-for="member in leastLoyal">
-            <td><a v-bind:href="member.url" target="_blank">{{ member.first_name }} {{ member.middle_name }}
-                {{ member.last_name }}</a></td>
-            <td>{{ Math.round((member.votes_with_party_pct / 100) * member.total_votes) }}</td>
-            <td>{{ member.votes_with_party_pct }}</td>
-          </tbody>
-        </table>
+    <footer class="row pt-3">
+      <div class="col-12 text-center text-muted py-3 my-3 border">
+        <p class="m-0">&copy; 2019 TGIF | All Rights Reserved</p>
       </div>
-      <div class="col-6">
-        <h2 class="h3">Most Loyal (Top 10% of Party)</h2>
-        <table class="table table-bordered table-hover">
-          <thead>
-            <tr>
-              <th>Senator</th>
-              <th>Number Party Votes</th>
-              <th>% Party Votes</th>
-            </tr>
-          </thead>
-          <tbody v-for="member in mostLoyal">
-            <td><a v-bind:href="member.url" target="_blank">{{ member.first_name }} {{ member.middle_name }}
-                {{ member.last_name }}</a></td>
-            <td>{{ Math.round((member.votes_with_party_pct / 100) * member.total_votes) }}</td>
-            <td>{{ member.votes_with_party_pct }}</td>
-          </tbody>
-        </table>
-      </div>
-    </div>
+    </footer>
   </div>
+
+
+
 
   <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
   <script src="main.js"></script>

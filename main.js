@@ -1,13 +1,13 @@
 'use strict'
 
-carousel();
+// carousel();
 
 let app = new Vue({
   el: "#app",
   data: {
     members: [],
     checkedParty: [],
-    selectedState: ["All"],
+    selectedState: "All",
     demTotalVotes: null,
     repTotalVotes: null,
     indTotalVotes: null,
@@ -132,10 +132,4 @@ let app = new Vue({
 
   },
 })
-
-
-function carousel() {
-  let carousel = document.getElementById("carouselHome");
-  interval: 2000;
-}
 

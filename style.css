@@ -62,7 +62,6 @@ header > div > div > h1 {
     font-size: 3.5em;
   }
   .senatorsImg {
-    /* display: none; */
     padding: 10px 10px;
   }
 }
@@ -77,6 +76,9 @@ header > div > div > h1 {
   }
   header > div > div > h1 {
     margin: 0px 0px 10px 0px;
+  }
+  .seniorityCol {
+    display: none;
   }
 }
 
@@ -116,10 +118,6 @@ thead {
 
 tbody {
   background-color: white;
-}
-
-.senatorsName {
-  color: black;
 }
 
 footer {
