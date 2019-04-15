@@ -12,18 +12,19 @@
 </head>
 
 <body>
-  <div class="container py-3" id="app">
+  <div class="container py-3 wrapper" id="app">
 
     <div v-if="members.length == 0" class="loader">
       <img class="block" src="img/tenor.gif" alt="Loading..." />
-      <p class="font-weight-bold font-italic"> Fetching data from the servers...</p>
+      <!-- <p class="font-weight-bold font-italic"> Fetching data from the servers...</p> -->
     </div>
 
-    <div class="row pt-3">
-      <div class="col-4">
-        <a href="home.html"><img src="img/e442323fb4db46a2df110f6724ac597a.jpg" alt=""></a>
+    <header class="row pt-3">
+      <div class="col-sm-4 text-center align-self-center">
+        <a class="" href="#"><img class="imgLogo img-fluid" src="img/27750690_796277473909261_1454095537477120106_n.png"
+            alt=""></a>
       </div>
-      <div class="col-8">
+      <div class="col-sm-8">
         <div class="row h-75 align-items-center">
           <h1 class="w-100 text-center">Transparent Government in Fact</h1>
         </div>
@@ -31,7 +32,7 @@
           <a class="align-self-end pr-3" href="mailto:dmolcap&#64;gmail.com">info&#64;tgif.net</a>
         </div>
       </div>
-    </div>
+    </header>
 
     <div class="row pt-3">
       <nav class="col-12 navbar">

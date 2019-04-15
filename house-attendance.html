@@ -12,29 +12,31 @@
 </head>
 
 <body>
-  <div class="container py-3" id="app">
+  <div class="container py-3 wrapper" id="app">
 
     <div v-if="members.length == 0" class="loader">
       <img class="block" src="img/tenor.gif" alt="Loading..." />
-      <p class="font-weight-bold font-italic">Fetching data from the servers...</p>
+      <!-- <p class="font-weight-bold font-italic">Fetching data from the servers...</p> -->
     </div>
 
-    <div class="row pt-3">
-      <div class="col-4">
-        <a href="home.html"><img src="img/e442323fb4db46a2df110f6724ac597a.jpg" alt=""></a>
+    <header class="row pt-3">
+      <div class="col-sm-4 text-center align-self-center">
+        <a class="" href="#"><img class="imgLogo img-fluid" src="img/27750690_796277473909261_1454095537477120106_n.png"
+            alt=""></a>
       </div>
-      <div class="col-8">
+      <div class="col-sm-8">
         <div class="row h-75 align-items-center">
           <h1 class="w-100 text-center">Transparent Government in Fact</h1>
         </div>
         <div class="row h-25 justify-content-end">
-          <a class="align-self-end pr-3" href="mailto:dmolcap&#64;gmail.com">info&#64;tgif.net</a>
+          <a class="align-self-end pr-3 text-dark" href="mailto:dmolcap&#64;gmail.com">Contact: info&#64;tgif.net <i
+              class="fas fa-envelope-square"></i></a>
         </div>
       </div>
-    </div>
+    </header>
 
     <div class="row pt-3">
-      <nav class="col-12 navbar">
+      <nav class="col-sm-12 navbar">
         <ul class="nav border w-100">
           <li class="nav-item">
             <a class="nav-link active" href="home.html">Home</a></li>
@@ -66,96 +68,108 @@
       </nav>
     </div>
 
-
-    <header>
-      <div>
-      </div>
-    </header>
     <!--Table container-->
     <div class="row">
-      <div class="col-6">
-        <h2 class="h3">Attendance</h2>
-        <p class="text-justify">The Constitution specifies that a majority of members constitutes a quorum to do
-          business in each house. Representatives and senators rarely force the presence of a quorum by demanding quorum
-          calls; thus, in most cases, debates continue even if a majority is not present.</p>
-        <p class="text-justify">The Senate uses roll-call votes; a clerk calls out the names of all the senators, each
-          senator stating "aye" or "no" when his or her name is announced. The House reserves roll-call votes for the
-          most formal matters, as a roll-call of all 435 representatives takes quite some time; normally, members vote
-          by electronic device. In the case of a tie, the motion in question fails. In the Senate, the Vice President
-          may (if present) cast the tiebreaking vote.</p>
-      </div>
-      <div class="col-6">
-        <h2 class="h3">House at a glance</h2>
-        <table class="table table-bordered table-hover">
-          <thead>
-            <tr>
-              <th>Party</th>
-              <th>No. of Reps</th>
-              <th>% of Voted w/ Party</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th>Democrats</th>
-              <td>{{ democrats.length }}</td>
-              <td>{{ demTotalVotes }}</td>
-            </tr>
-            <tr>
-              <th>Republicans</th>
-              <td>{{ republicans.length }}</td>
-              <td>{{ repTotalVotes }}</td>
-            </tr>
-            <tr>
-              <th>Independents</th>
-              <td>{{ independents.length }}</td>
-              <td>{{ indTotalVotes }}</td>
-            </tr>
-            <tr>
-              <th>Total</th>
-              <td>{{ democrats.length + republicans.length + independents.length }}</td>
-              <td>{{ totalVotes }}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-6">
-        <h2 class="h3">Least Engaged (Bottom 10% Attendance)</h2>
-        <table class="table table-bordered table-hover">
-          <thead>
-            <tr>
-              <th>Congressman</th>
-              <th>Number of Missed Votes</th>
-              <th>% Missed</th>
-            </tr>
-          </thead>
-          <tbody v-for="member in leastEngaged">
-            <td><a v-bind:href="member.url" target="_blank">{{ member.first_name }} {{ member.middle_name }}
-                {{ member.last_name }}</a></td>
-            <td>{{ member.missed_votes }}</td>
-            <td>{{ member.missed_votes_pct }}</td>
-          </tbody>
-        </table>
-      </div>
-      <div class="col-6">
-        <h2 class="h3">Most Engaged (Top 10% Attendance)</h2>
-        <table class="table table-bordered table-hover">
-          <thead>
-            <tr>
-              <th>Congressman</th>
-              <th>Number of Missed Votes</th>
-              <th>% Missed</th>
-            </tr>
-          </thead>
-          <tbody v-for="member in mostEngaged">
-            <td><a v-bind:href="member.url" target="_blank">{{ member.first_name }} {{ member.middle_name }}
-                {{ member.last_name }}</a></td>
-            <td>{{ member.missed_votes }}</td>
-            <td>{{ member.missed_votes_pct }}</td>
-          </tbody>
-        </table>
+      <div class="col-md-12">
+        <div class="card text-center">
+          <div class="card-header senatorsCardHeader">
+            <ul class="nav nav-tabs card-header-tabs">
+              <li class="nav-item">
+                <a class="nav-link inactive" href="senate-attendance.html">Senate</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" href="#">House</a>
+              </li>
+            </ul>
+          </div>
+          <div class="row">
+            <div class="col-md-6 card-body">
+              <h2 class="card-title text-left font-weight-bold senatorsText">Attendance</h2>
+              <p class="card-text text-justify m-0 senatorsText">The Constitution specifies that a majority of members
+                constitutes a quorum to do business in each house. Representatives and senators rarely force the
+                presence of a quorum by demanding quorum calls; thus, in most cases, debates continue even if a majority
+                is not present.</p>
+              <p class="text-justify m-0 senatorsText">The Senate uses roll-call votes; a clerk calls out the names of
+                all the senators, each senator stating "aye" or "no" when his or her name is announced. The House
+                reserves roll-call votes for the most formal matters, as a roll-call of all 435 representatives takes
+                quite some time; normally, members vote by electronic device. In the case of a tie, the motion in
+                question fails. In the Senate, the Vice President may (if present) cast the tiebreaking vote.
+              </p>
+            </div>
+            <div class="col-md-6 card-body align-self-center">
+              <h2 class="card-title text-left font-weight-bold senatorsText">House at a glance</h2>
+              <table class="table table-bordered table-hover">
+                <thead>
+                  <tr>
+                    <th>Party</th>
+                    <th>No. of Reps</th>
+                    <th>% of Voted w/ Party</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th>Democrats</th>
+                    <td>{{ democrats.length }}</td>
+                    <td>{{ demTotalVotes }}</td>
+                  </tr>
+                  <tr>
+                    <th>Republicans</th>
+                    <td>{{ republicans.length }}</td>
+                    <td>{{ repTotalVotes }}</td>
+                  </tr>
+                  <tr>
+                    <th>Independents</th>
+                    <td>{{ independents.length }}</td>
+                    <td>{{ indTotalVotes }}</td>
+                  </tr>
+                  <tr>
+                    <th>Total</th>
+                    <td>{{ democrats.length + republicans.length + independents.length }}</td>
+                    <td>{{ totalVotes }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 card-body">
+              <h2 class="card-title text-left font-weight-bold senatorsText">Least Engaged (Bottom 10% Attendance)</h2>
+              <table class="table table-bordered table-hover">
+                <thead>
+                  <tr>
+                    <th>Congressman</th>
+                    <th>No. of Missed Votes</th>
+                    <th>% Missed</th>
+                  </tr>
+                </thead>
+                <tbody v-for="member in leastEngaged">
+                  <td><a v-bind:href="member.url" target="_blank">{{ member.first_name }} {{ member.middle_name }}
+                      {{ member.last_name }}</a></td>
+                  <td>{{ member.missed_votes }}</td>
+                  <td>{{ member.missed_votes_pct }}</td>
+                </tbody>
+              </table>
+            </div>
+            <div class="col-md-6 card-body">
+              <h2 class="card-title text-left font-weight-bold senatorsText">Most Engaged (Top 10% Attendance)</h2>
+              <table class="table table-bordered table-hover">
+                <thead>
+                  <tr>
+                    <th>Congressman</th>
+                    <th>No. of Missed Votes</th>
+                    <th>% Missed</th>
+                  </tr>
+                </thead>
+                <tbody v-for="member in mostEngaged">
+                  <td><a v-bind:href="member.url" target="_blank">{{ member.first_name }} {{ member.middle_name }}
+                      {{ member.last_name }}</a></td>
+                  <td>{{ member.missed_votes }}</td>
+                  <td>{{ member.missed_votes_pct }}</td>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
