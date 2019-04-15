@@ -27,6 +27,11 @@ a:hover {
   color: black;
 }
 
+.collapseButton:hover {
+  text-decoration: none;
+  color: black;
+}
+
 nav > ul {
   border-radius: 10px;
   background-color: rgb(47, 152, 223);

@@ -35,22 +35,13 @@ let app = new Vue({
       return this.members.filter((member) => {
         let checkboxesFilter = (!this.checkedParty.length || this.checkedParty.includes(member.party));
         let dropdownFilter = (this.selectedState == "All" || this.selectedState == member.state);
-        let searchFilter = (this.searchByName == "" || member.first_name.includes(this.searchByName) || member.last_name.includes(this.searchByName));
+        let searchFilter = (this.searchByName == "" || member.first_name.toLowerCase().includes(this.searchByName.toLowerCase()) || member.last_name.toLowerCase().includes(this.searchByName.toLowerCase()));
         return checkboxesFilter && dropdownFilter && searchFilter;
       })
     },
-    searchFilter() {
-      // if (!this.checkedParty.length && this.selectedState == "All" && this.searchByName == "") {
-      //   return this.members
-      // }
-      // // "this" only works with arrow function. For regular functions we'd have to target the variables in data with "app.variableName" because "this" is out of the scope
-      // return this.members.filter((member) => {
-      //   let checkboxesFilter = (!this.checkedParty.length || this.checkedParty.includes(member.party));
-      //   let dropdownFilter = (this.selectedState == "All" || this.selectedState == member.state);
-      //   let searchFilter = (this.searchByName == "" || member.first_name.includes(this.searchByName));
-      //   return checkboxesFilter && dropdownFilter && searchFilter;
-      // })
-    },
+    // searchFilter() {
+    //   return this.searchByName.toLowerCase()
+    // },
     democrats() { // Total Democrats
       return this.members.filter(member => member.party == "D")
     },
