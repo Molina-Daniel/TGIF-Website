@@ -123,16 +123,48 @@ let app = new Vue({
       this.totalVotes = (this.members.map(member => member.votes_with_party_pct).reduce((total, num) => total + num) / this.members.length).toFixed(2)
     },
     leastEngagedTable() {
-      this.leastEngaged = this.members.sort(this.compareAttendance).reverse().slice(0, this.members.length * 10 / 100)
+      let membersSortedByMissVotesPct = this.members.sort(this.compareAttendance).reverse();
+      let missTenPct = [];
+
+      membersSortedByMissVotesPct.forEach(member => {
+        if (missTenPct.length <= membersSortedByMissVotesPct.length * 10 / 100 || member.missed_votes_pct == missTenPct[missTenPct.length - 1]) {
+          missTenPct.push(member)
+        }
+      });
+      return this.leastEngaged = missTenPct;
     },
     mostEngagedTable() {
-      this.mostEngaged = this.members.sort(this.compareAttendance).slice(0, this.members.length * 10 / 100)
+      let membersSortedByMissVotesPct = this.members.sort(this.compareAttendance);
+      let missTenPct = [];
+
+      membersSortedByMissVotesPct.forEach(member => {
+        if (missTenPct.length <= membersSortedByMissVotesPct.length * 10 / 100 || member.missed_votes_pct == missTenPct[missTenPct.length - 1]) {
+          missTenPct.push(member)
+        }
+      });
+      return this.mostEngaged = missTenPct;
     },
     leastLoyalTable() {
-      this.leastLoyal = this.members.sort(this.compareLoyalty).slice(0, this.members.length * 10 / 100)
+      let membersSortedByVotesWithPartyPct = this.members.sort(this.compareLoyalty).reverse();
+      let votesWithPartyTenPct = [];
+
+      membersSortedByVotesWithPartyPct.forEach(member => {
+        if (votesWithPartyTenPct.length <= membersSortedByVotesWithPartyPct.length * 10 / 100 || member.votes_with_party_pct == votesWithPartyTenPct[votesWithPartyTenPct.length - 1]) {
+          votesWithPartyTenPct.push(member)
+        }
+      });
+      return this.mostLoyal = votesWithPartyTenPct;
     },
     mostLoyalTable() {
-      this.mostLoyal = this.members.sort(this.compareLoyalty).reverse().slice(0, this.members.length * 10 / 100)
+      let membersSortedByVotesWithPartyPct = this.members.sort(this.compareLoyalty);
+      let votesWithPartyTenPct = [];
+
+      membersSortedByVotesWithPartyPct.forEach(member => {
+        if (votesWithPartyTenPct.length <= membersSortedByVotesWithPartyPct.length * 10 / 100 || member.missed_votes_pct == votesWithPartyTenPct[votesWithPartyTenPct.length - 1]) {
+          votesWithPartyTenPct.push(member)
+        }
+      });
+      return this.leastLoyal = votesWithPartyTenPct;
     },
 
   },
