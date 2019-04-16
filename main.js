@@ -55,14 +55,13 @@ let app = new Vue({
   },
   methods: {
     fetchData() {
-      let senatePage = "http://localhost:8000/senate-page.html"
-      let senateAttendancePage = "http://localhost:8000/senate-attendance.html"
-      let senatePartyLoyaltyPage = "http://localhost:8000/senate-party-loyalty.html"
       let senateUrl = "https://api.propublica.org/congress/v1/113/senate/members.json";
       let houseUrl = "https://api.propublica.org/congress/v1/113/house/members.json";
+      let actualURL = document.URL
+      let actualURLArr = actualURL.indexOf("senate")
       let url;
 
-      if (document.URL == senatePage || document.URL == senateAttendancePage || document.URL == senatePartyLoyaltyPage) {
+      if (actualURLArr !== -1) {
         url = senateUrl;
       } else {
         url = houseUrl;
