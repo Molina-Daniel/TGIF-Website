@@ -126,7 +126,7 @@ let app = new Vue({
       let missTenPct = [];
 
       membersSortedByMissVotesPct.forEach(member => {
-        if (missTenPct.length <= membersSortedByMissVotesPct.length * 10 / 100 || member.missed_votes_pct == missTenPct[missTenPct.length - 1]) {
+        if (missTenPct.length <= membersSortedByMissVotesPct.length * 10 / 100 || member.missed_votes_pct == missTenPct[missTenPct.length - 1].missed_votes_pct) {
           missTenPct.push(member)
         }
       });
@@ -137,7 +137,7 @@ let app = new Vue({
       let missTenPct = [];
 
       membersSortedByMissVotesPct.forEach(member => {
-        if (missTenPct.length <= membersSortedByMissVotesPct.length * 10 / 100 || member.missed_votes_pct == missTenPct[missTenPct.length - 1]) {
+        if (missTenPct.length <= membersSortedByMissVotesPct.length * 10 / 100 || member.missed_votes_pct == missTenPct[missTenPct.length - 1].missed_votes_pct) {
           missTenPct.push(member)
         }
       });
@@ -148,7 +148,7 @@ let app = new Vue({
       let votesWithPartyTenPct = [];
 
       membersSortedByVotesWithPartyPct.forEach(member => {
-        if (votesWithPartyTenPct.length <= membersSortedByVotesWithPartyPct.length * 10 / 100 || member.votes_with_party_pct == votesWithPartyTenPct[votesWithPartyTenPct.length - 1]) {
+        if (votesWithPartyTenPct.length <= membersSortedByVotesWithPartyPct.length * 10 / 100 || member.votes_with_party_pct == votesWithPartyTenPct[votesWithPartyTenPct.length - 1].votes_with_party_pct) {
           votesWithPartyTenPct.push(member)
         }
       });
@@ -159,7 +159,7 @@ let app = new Vue({
       let votesWithPartyTenPct = [];
 
       membersSortedByVotesWithPartyPct.forEach(member => {
-        if (votesWithPartyTenPct.length <= membersSortedByVotesWithPartyPct.length * 10 / 100 || member.missed_votes_pct == votesWithPartyTenPct[votesWithPartyTenPct.length - 1]) {
+        if (votesWithPartyTenPct.length <= membersSortedByVotesWithPartyPct.length * 10 / 100 || member.missed_votes_pct == votesWithPartyTenPct[votesWithPartyTenPct.length - 1].votes_with_party_pct) {
           votesWithPartyTenPct.push(member)
         }
       });
