@@ -87,9 +87,9 @@ header > div > div > h1 {
   }
 }
 
-/* .carousel-control-prev-icon, .carousel-control-next-icon {
-  color: rgba(0, 0, 0, 0.9);
-} */
+.carousel-control-prev, .carousel-control-next {
+  background-color: rgba(0, 0, 0, 0.4);
+}
 
 #headingOne, #headingTwo {
   background-color: rgb(47, 152, 223);
