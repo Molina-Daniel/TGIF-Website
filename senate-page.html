@@ -133,38 +133,45 @@
 		<div class="row mt-3 mx-3">
 			<div class="col-12 border form-group">
 				<div class="row justify-content-between filter">
-					<div class="col-md-4 text-center">
+					<div class="col-md-6 text-center">
 						<p class="font-weight-bold mb-1">Filter by Party:</p>
 						<div class="form-check form-check-inline">
-							<input v-model="checkedParty" type="checkbox" name="partyCheckboxes" id="democrat" value="D">
-							<label class="m-0" for="democrat">Democrat</label>
+							<input class="d-none" v-model="checkedParty" type="checkbox" name="partyCheckboxes" id="democrat"
+								value="D">
+							<label class="m-1 checkboxLabel" for="democrat">Democrats</label>
 						</div>
 						<div class="form-check form-check-inline">
-							<input v-model="checkedParty" type="checkbox" name="partyCheckboxes" id="republican" value="R">
-							<label class="m-0" for="republican">Republican</label>
+							<input class="d-none" v-model="checkedParty" type="checkbox" name="partyCheckboxes" id="republican"
+								value="R">
+							<label class="m-1 checkboxLabel" for="republican">Republicans</label>
 						</div>
 						<div class="form-check form-check-inline">
-							<input v-model="checkedParty" type="checkbox" name="partyCheckboxes" id="independent" value="I">
-							<label class="m-0" for="independent">Independent</label>
+							<input class="d-none" v-model="checkedParty" type="checkbox" name="partyCheckboxes" id="independent"
+								value="I">
+							<label class="m-1 checkboxLabel" for="independent">Independents</label>
 						</div>
 					</div>
-					<div class="col-md-4 text-center">
+					<div class="col-md-6 text-center">
 						<p class="font-weight-bold mb-2">Filter by State:</p>
 						<div>
 							<label for="states">Select State:</label>
-							<select v-model="selectedState" name="stateDropdown" id="state">
-								<option value="All">- All -</option>
-								<option v-for="state in states" v-bind:value="state">{{ state }}</option>
-							</select>
+							<div class="row">
+								<div class="select">
+									<select v-model="selectedState" name="stateDropdown" id="state">
+										<option value="All">- All -</option>
+										<option v-for="state in states" v-bind:value="state">{{ state }}</option>
+									</select>
+								</div>
+							</div>
 						</div>
-					</div>
-					<div class="col-md-4 text-center">
+						<!-- <div class="col-md-4 text-center"> -->
 						<p class="font-weight-bold mb-2">Filter by Name:</p>
 						<div>
 							<input v-model="searchByName" type="text" name="search" id="search"
 								placeholder="Type name or surname here">
 						</div>
 					</div>
+					<!-- </div> -->
 				</div>
 			</div>
 		</div>
@@ -175,14 +182,10 @@
 					<thead>
 						<tr>
 							<th @click="sortByColum('first_name')">Senator <i class="fas fa-sort"></i></th>
-
 							<th @click="sortByColum('party')">Party<span class="d-none d-md-inline">
 									Affiliation</span> <i class="fas fa-sort"></i></th>
-
 							<th @click="sortByColum('state')">State <i class="fas fa-sort"></i></th>
-
 							<th @click="sortByColum('seniority')" class="seniorityCol">Seniority <i class="fas fa-sort"></i></th>
-
 							<th @click="sortByColum('votes_with_party_pct')"><span class="d-md-none">%</span><span
 									class="d-none d-md-inline">Percentage</span> of Votes <i class="fas fa-sort"></i></th>
 						</tr>
