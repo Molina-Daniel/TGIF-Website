@@ -9,6 +9,12 @@ let app = new Vue({
     checkedParty: [],
     selectedState: "All",
     searchByName: "",
+    filteredMembers: [],
+    currentSort: 'first_name',
+    currentSortDir: 'asc',
+    pageSizeInput: 10,
+    pageSize: 10,
+    currentPage: 1,
     demTotalVotes: null,
     repTotalVotes: null,
     indTotalVotes: null,
@@ -17,7 +23,6 @@ let app = new Vue({
     mostEngaged: [],
     leastLoyal: [],
     mostLoyal: [],
-
   },
   created() {
     this.fetchData();
@@ -27,21 +32,6 @@ let app = new Vue({
     states() { // Get all the states w/o repeats
       return new Set(this.members.map(member => member.state).sort())
     },
-    filteredTable() { // Make the filters work
-      if (!this.checkedParty.length && this.selectedState == "All" && this.searchByName == "") {
-        return this.members
-      }
-      // "this" only works with arrow function. For regular functions we'd have to target the variables in data with "app.variableName" because "this" is out of the scope
-      return this.members.filter((member) => {
-        let checkboxesFilter = (!this.checkedParty.length || this.checkedParty.includes(member.party));
-        let dropdownFilter = (this.selectedState == "All" || this.selectedState == member.state);
-        let searchFilter = (this.searchByName == "" || member.first_name.toLowerCase().includes(this.searchByName.toLowerCase()) || member.last_name.toLowerCase().includes(this.searchByName.toLowerCase()));
-        return checkboxesFilter && dropdownFilter && searchFilter;
-      })
-    },
-    // searchFilter() {
-    //   return this.searchByName.toLowerCase()
-    // },
     democrats() { // Total Democrats
       return this.members.filter(member => member.party == "D")
     },
@@ -51,7 +41,38 @@ let app = new Vue({
     independents() { // Total Independents
       return this.members.filter(member => member.party == "I")
     },
-
+    filteredTable() { // Filter the original members array
+      if (!this.checkedParty.length && this.selectedState == "All" && this.searchByName == "") {
+        return this.filteredMembers = this.members;
+      }
+      // "this" only works with arrow function. For regular functions we'd have to target the variables in data with "app.variableName" because "this" is out of the scope
+      return this.filteredMembers = this.members.filter((member) => {
+        let checkboxesFilter = (!this.checkedParty.length || this.checkedParty.includes(member.party));
+        let dropdownFilter = (this.selectedState == "All" || this.selectedState == member.state);
+        let searchFilter = (this.searchByName == "" || member.first_name.toLowerCase().includes(this.searchByName.toLowerCase()) || member.last_name.toLowerCase().includes(this.searchByName.toLowerCase()));
+        return checkboxesFilter && dropdownFilter && searchFilter;
+      })
+    },
+    sortedMembers() { // Sort above filtered array alphabetically or numerically
+      return this.filteredMembers.sort((a, b) => {
+        let modifier = 1;
+        if (this.currentSortDir === 'desc') modifier = -1;
+        if (a[this.currentSort] < b[this.currentSort]) return -1 * modifier;
+        if (a[this.currentSort] > b[this.currentSort]) return 1 * modifier;
+        return 0;
+      }).filter((row, index) => {
+        if (this.pageSizeInput == "All") {
+          this.pageSize = this.filteredMembers.length;
+        } else {
+          this.pageSize = this.pageSizeInput;
+        }
+        let start = (this.currentPage - 1) * this.pageSize;
+        let end = this.currentPage * this.pageSize;
+        if (index >= start && index < end) {
+          return true;
+        }
+      });
+    },
   },
   methods: {
     fetchData() {
@@ -165,7 +186,27 @@ let app = new Vue({
       });
       return this.leastLoyal = votesWithPartyTenPct;
     },
-
+    sortByColum(sort) { // It recognize when we are sorting by the same column and flip the direction
+      // if sort == current sort, reverse
+      if (sort === this.currentSort) {
+        this.currentSortDir = this.currentSortDir === 'asc' ? 'desc' : 'asc';
+      }
+      this.currentSort = sort;
+    },
+    nextPage() {
+      if ((this.currentPage * this.pageSize) < this.filteredMembers.length) {
+        this.currentPage++;
+      }
+    },
+    prevPage() {
+      if (this.currentPage > 1) {
+        this.currentPage--;
+      }
+    },
   },
 })
+
+
+
+
 
