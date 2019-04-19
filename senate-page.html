@@ -154,9 +154,9 @@
 					<div class="col-md-6 text-center">
 						<p class="font-weight-bold mb-2">Filter by State:</p>
 						<div>
-							<label for="states">Select State:</label>
 							<div class="row justify-content-center">
-								<div class="select">
+								<label class="selectLabel" for="states">Select State:</label>
+								<div class="selectState">
 									<select v-model="selectedState" name="stateDropdown" id="state">
 										<option value="All">- All -</option>
 										<option v-for="state in states" v-bind:value="state">{{ state }}</option>
