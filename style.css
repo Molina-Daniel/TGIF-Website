@@ -120,6 +120,19 @@ header > div > div > h1 {
   padding: 10px 0px 5px 0px;
 }
 
+#search {
+  background-color: #6a8494;
+  border: 3px solid #fff;
+  border-radius: 0.5em;
+  box-shadow: 0 0 20px rgba(0, 0, 0, .6);
+}
+
+#search::placeholder {
+  color: #fff;
+  opacity: 1;
+  padding: 5px;
+}
+
 thead {
   background-color: rgb(47, 152, 223);
   color: white;
