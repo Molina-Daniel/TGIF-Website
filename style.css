@@ -216,8 +216,14 @@ label:last-of-type {
   box-shadow: 0 0 20px rgba(0, 0, 0, .6);
 }
 
-input:checked + .checkboxLabel {
+input:checked + .demCheckbox {
+  background-color: #1e378a;
+}
+input:checked + .repCheckbox {
   background-color: #ab576c;
+}
+input:checked + .indCheckbox {
+  background-color: #959724;
 }
 
 input:checked + .checkboxLabel::before {
