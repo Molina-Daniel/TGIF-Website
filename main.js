@@ -67,7 +67,9 @@ let app = new Vue({
           this.pageSize = this.pageSizeInput;
         }
         let start = (this.currentPage - 1) * this.pageSize;
+        console.log(start);
         let end = this.currentPage * this.pageSize;
+        console.log(end);
         if (index >= start && index < end) {
           return true;
         }
