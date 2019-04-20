@@ -201,7 +201,32 @@
           </tbody>
         </table>
         <div v-if="!filteredTable.length" id="noData" class="text-center h3 font-italic">
-          <p>Sorry, any data matches your request.</p>
+          <p>Sorry, no member matches that criteria</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="row align-items-center tableResults">
+      <div class="col-12">
+        <div class="row justify-content-between">
+          <div class="col-md-auto text-center order-md-2 ">
+            <p class="mb-md-0">Found {{ filteredMembers.length }} results filtered from a total of {{ members.length }}
+              entries
+            </p>
+          </div>
+          <div class="col-xs-auto order-md-1">
+            <label class="mb-0" for="membersNum">Members per page:</label>
+            <select v-model="pageSizeInput" name="membersNum" id="membersNum">
+              <option value="10">10</option>
+              <option value="20">20</option>
+              <option value="50">50</option>
+              <option value="All">All</option>
+            </select>
+          </div>
+          <div class="col-xs-auto order-md-3 text-right">
+            <button class="pageButtons" @click="prevPage">Previous</button>
+            <button class="pageButtons" @click="nextPage">Next</button>
+          </div>
         </div>
       </div>
     </div>

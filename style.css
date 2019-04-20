@@ -142,6 +142,18 @@ tbody {
   background-color: white;
 }
 
+.tableResults {
+  background-color: white;
+  margin: -10px 0px 0px 0px;
+  padding: 5px 5px 5px 5px;
+}
+
+.pageButtons {
+  background-color: #6a8494;
+  color: #fff;
+  border-radius: 0.5em;
+}
+
 footer {
   padding: 0 15px;
 }
@@ -226,9 +238,9 @@ input:checked + .indCheckbox {
   background-color: #959724;
 }
 
-input:checked + .checkboxLabel::before {
+/* input:checked + .checkboxLabel::before {
   background-color: #fff;
-}
+} */
 
 
 /* Select State Style */
