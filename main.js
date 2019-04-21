@@ -75,6 +75,9 @@ let app = new Vue({
         }
       });
     },
+    pages() {
+      return Math.ceil(this.filteredMembers.length / this.pageSize);
+    },
   },
   methods: {
     fetchData() {
