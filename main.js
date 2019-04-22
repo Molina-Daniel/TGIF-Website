@@ -63,6 +63,9 @@ let app = new Vue({
       }).filter((row, index) => {
         if (this.pageSizeInput == "All") {
           this.pageSize = this.filteredMembers.length;
+          // Correct the page number if we change the entries per page
+        } else if (this.currentPage > this.pages) {
+          this.currentPage = this.pages;
         } else {
           this.pageSize = this.pageSizeInput;
         }
