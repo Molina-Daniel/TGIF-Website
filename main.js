@@ -1,6 +1,26 @@
 'use strict'
 
-// carousel();
+// responsiveness();
+
+// function responsiveness() {
+//   if (window.innerWidth <= 870) {
+//     document.querySelector(".pageSelect").addClass('order-1');
+//   }
+// }
+
+Vue.component("tablemember", {
+  props: ["memberx"],
+  template: `
+  <tr>
+    <td><a class="text-dark" v-bind:href="memberx.url" target="_blank">{{ memberx.first_name }} {{ memberx.middle_name }} {{ memberx.last_name }}</a></td>
+    <td>{{ memberx.party }}</td>
+    <td>{{ memberx.state }}</td>
+    <td class="seniorityCol">{{ memberx.seniority }}</td>
+    <td>{{ memberx.votes_with_party_pct }}</td>
+  </tr>
+  `
+});
+
 
 let app = new Vue({
   el: "#app",
@@ -63,6 +83,7 @@ let app = new Vue({
       }).filter((row, index) => {
         if (this.pageSizeInput == "All") {
           this.pageSize = this.filteredMembers.length;
+          this.currentPage = 1;
           // Correct the page number if we change the entries per page
         } else if (this.currentPage > this.pages) {
           this.currentPage = this.pages;
@@ -70,9 +91,7 @@ let app = new Vue({
           this.pageSize = this.pageSizeInput;
         }
         let start = (this.currentPage - 1) * this.pageSize;
-        console.log(start);
         let end = this.currentPage * this.pageSize;
-        console.log(end);
         if (index >= start && index < end) {
           return true;
         }
@@ -86,16 +105,17 @@ let app = new Vue({
     fetchData() {
       let senateUrl = "https://api.propublica.org/congress/v1/113/senate/members.json";
       let houseUrl = "https://api.propublica.org/congress/v1/113/house/members.json";
-      let actualURL = document.URL
-      let actualURLArr = actualURL.indexOf("senate")
+      let currentURL = document.URL
+      let currentURLArr = currentURL.indexOf("senate")
       let url;
 
-      if (actualURLArr !== -1) {
+      if (currentURLArr !== -1) {
         url = senateUrl;
       } else {
         url = houseUrl;
       }
 
+      // if (!localStorage.members || url != senateUrl) {
       fetch(url, {
         method: 'GET',
         headers: {
@@ -106,7 +126,8 @@ let app = new Vue({
         .then(response => response.json())
         // Do stuff with the JSON
         .then(responseAsJson => {
-          this.members = responseAsJson.results[0].members
+          this.members = responseAsJson.results[0].members;
+          localStorage.setItem("members", JSON.stringify(responseAsJson.results[0].members))
           this.demTotVots()
           this.repTotVots()
           this.indTotVots()
@@ -115,10 +136,18 @@ let app = new Vue({
           this.leastEngagedTable()
           this.leastLoyalTable()
           this.mostLoyalTable()
+          // responsiveness();
         })
         .catch(function (error) {
           console.log('Looks like there was a problem: \n', error);
         });
+      // } else if (condition) {
+
+      // }
+      //  else {
+      //   this.members = JSON.parse(localStorage.members)
+      // }
+
     },
     compareAttendance(a, b) {
       if (a.missed_votes_pct < b.missed_votes_pct)
@@ -216,5 +245,18 @@ let app = new Vue({
 
 
 
+// if (window.innerWidth <= 870) {
+//   document.querySelector(".pageSelect").addClass('order-1');
+// }
 
+// let pageSelect = document.querySelector('.pageSelect');
 
+// function paginationResponsiveness() {
+//   if (window.innerWidth <= 870) {
+//     pageSelect.classList.add("mb-3");
+//   } else {
+//     pageSelect.classList.remove("mb-3");
+//   }
+// };
+
+// window.onResize = paginationResponsiveness;

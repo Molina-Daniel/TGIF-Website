@@ -188,7 +188,9 @@
 						</tr>
 					</thead>
 					<tbody id="dataTable">
-						<tr v-for="member in sortedMembers">
+						<tr is="tablemember" v-for="member in sortedMembers" :memberx="member"></tr>
+
+						<!-- <tr v-for="member in sortedMembers">
 							<td><a class="text-dark" v-bind:href="member.url" target="_blank">{{ member.first_name }}
 									{{ member.middle_name }}
 									{{ member.last_name }}</a></td>
@@ -196,7 +198,7 @@
 							<td>{{ member.state }}</td>
 							<td class="seniorityCol">{{ member.seniority }}</td>
 							<td>{{ member.votes_with_party_pct }}</td>
-						</tr>
+						</tr> -->
 					</tbody>
 				</table>
 				<div v-if="!filteredTable.length" id="noData" class="text-center h3 font-italic">
@@ -208,13 +210,13 @@
 		<div class="row align-items-center tableResults">
 			<div class="col-12">
 				<div class="row justify-content-between">
-					<div class="col-md-auto text-center order-md-2 ">
+					<div class="col-md-auto text-center order-md-2 pageResults">
 						<p class="mb-md-0">Found {{ filteredMembers.length }} results filtered from a total of {{ members.length }}
 							entries
 						</p>
 					</div>
-					<div class="col-xs-auto order-md-1">
-						<label class="mb-0" for="membersNum">Members per page:</label>
+					<div class="col-xs-auto order-md-1 pageSelect">
+						<label class="" for="membersNum">Members per page:</label>
 						<select v-model="pageSizeInput" name="membersNum" id="membersNum">
 							<option value="10">10</option>
 							<option value="20">20</option>
@@ -222,7 +224,7 @@
 							<option value="All">All</option>
 						</select>
 					</div>
-					<div class="col-xs-auto order-md-3 text-right">
+					<div class="col-xs-auto order-md-3 text-right pagination">
 						<button class="pageButtons" @click="prevPage">Previous</button>
 						<span>Page: {{ currentPage }} / {{ pages }}</span>
 						<button class="pageButtons" @click="nextPage">Next</button>

@@ -59,6 +59,12 @@ header > div > div > h1 {
   padding: 10px 10px;
 }
 
+/* @media (max-width: 870px) {
+  .pageSelect {
+    
+  }
+} */
+
 @media (max-width: 768px) {
   #carouselHome {
     margin-top: 20px;
