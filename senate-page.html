@@ -210,23 +210,27 @@
 		<div class="row align-items-center tableResults">
 			<div class="col-12">
 				<div class="row justify-content-between">
-					<div class="col-md-auto text-center order-md-2 pageResults">
-						<p class="mb-md-0">Found {{ filteredMembers.length }} results filtered from a total of {{ members.length }}
+					<div class="col-lg-auto text-center order-lg-2 pageResults align-self-center">
+						<p class="mb-1">Found {{ filteredMembers.length }} results filtered from a total of {{ members.length }}
 							entries
 						</p>
 					</div>
-					<div class="col-xs-auto order-md-1 pageSelect">
-						<label class="" for="membersNum">Members per page:</label>
-						<select v-model="pageSizeInput" name="membersNum" id="membersNum">
-							<option value="10">10</option>
-							<option value="20">20</option>
-							<option value="50">50</option>
-							<option value="All">All</option>
-						</select>
+					<div class="col-lg-auto order-lg-1 pageSelect mb-2 align-self-center text-center">
+						<div class="row justify-content-center">
+							<label class="col-4 col-lg-8 mb-0 px-0" for="memPerPage">Members per page:</label>
+							<div class="col-8 col-lg-4 align-self-center selectPage">
+								<select v-model="pageSizeInput" name="memPerPage" id="memPerPage">
+									<option value="10">10</option>
+									<option value="20">20</option>
+									<option value="50">50</option>
+									<option value="All">All</option>
+								</select>
+							</div>
+						</div>
 					</div>
-					<div class="col-xs-auto order-md-3 text-right pagination">
+					<div class="col-lg-auto order-lg-3 text-center align-self-center">
 						<button class="pageButtons" @click="prevPage">Previous</button>
-						<span>Page: {{ currentPage }} / {{ pages }}</span>
+						<span class="align-bottom">Page: {{ currentPage }} / {{ pages }}</span>
 						<button class="pageButtons" @click="nextPage">Next</button>
 					</div>
 				</div>
