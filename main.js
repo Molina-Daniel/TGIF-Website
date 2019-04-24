@@ -115,39 +115,59 @@ let app = new Vue({
         url = houseUrl;
       }
 
-      // if (!localStorage.members || url != senateUrl) {
-      fetch(url, {
-        method: 'GET',
-        headers: {
-          'X-API-Key': 's3rUR0pNj1b3rAUOxF3Yt50ZRnneSpkQ11lVTwiq'
-        },
-      })
-        // Read the response as json.
-        .then(response => response.json())
-        // Do stuff with the JSON
-        .then(responseAsJson => {
-          this.members = responseAsJson.results[0].members;
-          localStorage.setItem("members", JSON.stringify(responseAsJson.results[0].members))
-          this.demTotVots()
-          this.repTotVots()
-          this.indTotVots()
-          this.totalVots()
-          this.mostEngagedTable()
-          this.leastEngagedTable()
-          this.leastLoyalTable()
-          this.mostLoyalTable()
-          // responsiveness();
+      if (localStorage.senateMembers && url == senateUrl) {
+        this.members = JSON.parse(localStorage.senateMembers);
+        this.demTotVots()
+        this.repTotVots()
+        this.indTotVots()
+        this.totalVots()
+        this.mostEngagedTable()
+        this.leastEngagedTable()
+        this.leastLoyalTable()
+        this.mostLoyalTable()
+      } else if (localStorage.houseMembers) {
+        this.members = JSON.parse(localStorage.houseMembers);
+        this.demTotVots()
+        this.repTotVots()
+        this.indTotVots()
+        this.totalVots()
+        this.mostEngagedTable()
+        this.leastEngagedTable()
+        this.leastLoyalTable()
+        this.mostLoyalTable()
+      }
+
+      if ((!localStorage.senateMembers && url == senateUrl) || (!localStorage.houseMembers && url == houseUrl)) {
+        fetch(url, {
+          method: 'GET',
+          headers: {
+            'X-API-Key': 's3rUR0pNj1b3rAUOxF3Yt50ZRnneSpkQ11lVTwiq'
+          },
         })
-        .catch(function (error) {
-          console.log('Looks like there was a problem: \n', error);
-        });
-      // } else if (condition) {
-
-      // }
-      //  else {
-      //   this.members = JSON.parse(localStorage.members)
-      // }
-
+          // Read the response as json.
+          .then(response => response.json())
+          // Do stuff with the JSON
+          .then(responseAsJson => {
+            if (!localStorage.senateMembers && url == senateUrl) {
+              localStorage.setItem("senateMembers", JSON.stringify(responseAsJson.results[0].members))
+              this.members = JSON.parse(localStorage.senateMembers);
+            } else {
+              localStorage.setItem("houseMembers", JSON.stringify(responseAsJson.results[0].members))
+              this.members = JSON.parse(localStorage.houseMembers);
+            }
+            this.demTotVots()
+            this.repTotVots()
+            this.indTotVots()
+            this.totalVots()
+            this.mostEngagedTable()
+            this.leastEngagedTable()
+            this.leastLoyalTable()
+            this.mostLoyalTable()
+          })
+          .catch(function (error) {
+            console.log('Looks like there was a problem: \n', error);
+          });
+      }
     },
     compareAttendance(a, b) {
       if (a.missed_votes_pct < b.missed_votes_pct)
@@ -223,7 +243,11 @@ let app = new Vue({
       });
       return this.leastLoyal = votesWithPartyTenPct;
     },
-    sortByColum(sort) { // It recognize when we are sorting by the same column and flip the direction
+    /**
+     * It recognize when we are sorting by the same column and flip the direction
+     * @param {*} sort Table column
+     */
+    sortByColum(sort) {
       // if sort == current sort, reverse
       if (sort === this.currentSort) {
         this.currentSortDir = this.currentSortDir === 'asc' ? 'desc' : 'asc';
