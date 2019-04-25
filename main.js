@@ -23,7 +23,7 @@ let app = new Vue({
     searchByName: "",
     filteredMembers: [],
     currentSort: 'first_name',
-    currentSortDir: 'asc',
+    sortDirection: 'asc',
     pageSizeInput: 10,
     pageSize: 10,
     currentPage: 1,
@@ -68,7 +68,7 @@ let app = new Vue({
     sortedMembers() { // Sort above filtered array alphabetically or numerically
       return this.filteredMembers.sort((a, b) => {
         let modifier = 1;
-        if (this.currentSortDir === 'desc') modifier = -1;
+        if (this.sortDirection === 'desc') modifier = -1;
         if (a[this.currentSort] < b[this.currentSort]) return -1 * modifier;
         if (a[this.currentSort] > b[this.currentSort]) return 1 * modifier;
         return 0;
@@ -244,7 +244,7 @@ let app = new Vue({
     sortByColum(sort) {
       // if sort == current sort, reverse
       if (sort === this.currentSort) {
-        this.currentSortDir = this.currentSortDir === 'asc' ? 'desc' : 'asc';
+        this.sortDirection = this.sortDirection === 'asc' ? 'desc' : 'asc';
       }
       this.currentSort = sort;
     },
