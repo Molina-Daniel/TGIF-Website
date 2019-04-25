@@ -176,30 +176,27 @@
           <thead>
             <tr>
               <th class="pointer" @click="sortByColum('first_name')">Senator <i class="fas fa-sort"></i></th>
-
               <th class="pointer" @click="sortByColum('party')">Party<span class="d-none d-md-inline">
                   Affiliation</span> <i class="fas fa-sort"></i></th>
-
               <th class="pointer" @click="sortByColum('state')">State <i class="fas fa-sort"></i></th>
-
-              <th class="pointer" @click="sortByColum('seniority')" class="seniorityCol">Seniority <i
-                  class="fas fa-sort"></i></th>
-
+              <th @click="sortByColum('seniority')" class="seniorityCol pointer">Seniority <i class="fas fa-sort"></i>
+              </th>
               <th class="pointer" @click="sortByColum('votes_with_party_pct')"><span class="d-md-none">%</span><span
                   class="d-none d-md-inline">Percentage</span> of Votes <i class="fas fa-sort"></i></th>
             </tr>
           </thead>
           <tbody id="dataTable">
             <tr is="tablemember" v-for="member in sortedMembers" :memberx="member"></tr>
+
             <!-- <tr v-for="member in sortedMembers">
-              <td><a class="text-dark" v-bind:href="member.url" target="_blank">{{ member.first_name }}
-                  {{ member.middle_name }}
-                  {{ member.last_name }}</a></td>
-              <td>{{ member.party }}</td>
-              <td>{{ member.state }}</td>
-              <td class="seniorityCol">{{ member.seniority }}</td>
-              <td>{{ member.votes_with_party_pct }}</td>
-            </tr> -->
+							<td><a class="text-dark" v-bind:href="member.url" target="_blank">{{ member.first_name }}
+									{{ member.middle_name }}
+									{{ member.last_name }}</a></td>
+							<td>{{ member.party }}</td>
+							<td>{{ member.state }}</td>
+							<td class="seniorityCol">{{ member.seniority }}</td>
+							<td>{{ member.votes_with_party_pct }}</td>
+						</tr> -->
           </tbody>
         </table>
         <div v-if="!filteredTable.length" id="noData" class="text-center h3 font-italic">
@@ -211,23 +208,27 @@
     <div class="row align-items-center tableResults">
       <div class="col-12">
         <div class="row justify-content-between">
-          <div class="col-md-auto text-center order-md-2 ">
-            <p class="mb-md-0">Found {{ filteredMembers.length }} results filtered from a total of {{ members.length }}
+          <div class="col-lg-auto text-center order-lg-2 pageResults align-self-center">
+            <p class="mb-1">Found {{ filteredMembers.length }} results filtered from a total of {{ members.length }}
               entries
             </p>
           </div>
-          <div class="col-xs-auto order-md-1">
-            <label class="mb-0" for="membersNum">Members per page:</label>
-            <select v-model="pageSizeInput" name="membersNum" id="membersNum">
-              <option value="10">10</option>
-              <option value="20">20</option>
-              <option value="50">50</option>
-              <option value="All">All</option>
-            </select>
+          <div class="col-lg-auto order-lg-1 pageSelect mb-2 align-self-center text-center">
+            <div class="row justify-content-center">
+              <label class="col-4 col-lg-8 mb-0 px-0" for="memPerPage">Members per page:</label>
+              <div class="col-8 col-lg-4 align-self-center selectPage">
+                <select v-model="pageSizeInput" name="memPerPage" id="memPerPage">
+                  <option value="10">10</option>
+                  <option value="20">20</option>
+                  <option value="50">50</option>
+                  <option value="All">All</option>
+                </select>
+              </div>
+            </div>
           </div>
-          <div class="col-xs-auto order-md-3 text-right">
+          <div class="col-lg-auto order-lg-3 text-center align-self-center">
             <button class="pageButtons" @click="prevPage">Previous</button>
-            <span>Page: {{ currentPage }} / {{ pages }}</span>
+            <span class="align-bottom">Page: {{ currentPage }} / {{ pages }}</span>
             <button class="pageButtons" @click="nextPage">Next</button>
           </div>
         </div>
