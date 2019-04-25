@@ -1,13 +1,5 @@
 'use strict'
 
-// responsiveness();
-
-// function responsiveness() {
-//   if (window.innerWidth <= 870) {
-//     document.querySelector(".pageSelect").addClass('order-1');
-//   }
-// }
-
 Vue.component("tablemember", {
   props: ["memberx"],
   template: `
@@ -109,12 +101,14 @@ let app = new Vue({
       let currentURLArr = currentURL.indexOf("senate")
       let url;
 
+      // Check if the url contains "senate"
       if (currentURLArr !== -1) {
         url = senateUrl;
       } else {
         url = houseUrl;
       }
 
+      // Check if there's data in the local storage
       if (localStorage.senateMembers && url == senateUrl) {
         this.members = JSON.parse(localStorage.senateMembers);
         this.demTotVots()
@@ -268,19 +262,3 @@ let app = new Vue({
 })
 
 
-
-// if (window.innerWidth <= 870) {
-//   document.querySelector(".pageSelect").addClass('order-1');
-// }
-
-// let pageSelect = document.querySelector('.pageSelect');
-
-// function paginationResponsiveness() {
-//   if (window.innerWidth <= 870) {
-//     pageSelect.classList.add("mb-3");
-//   } else {
-//     pageSelect.classList.remove("mb-3");
-//   }
-// };
-
-// window.onResize = paginationResponsiveness;

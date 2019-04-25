@@ -59,12 +59,6 @@ header > div > div > h1 {
   padding: 10px 10px;
 }
 
-/* @media (max-width: 870px) {
-  .pageSelect {
-    
-  }
-} */
-
 @media (max-width: 768px) {
   #carouselHome {
     margin-top: 20px;
@@ -146,6 +140,10 @@ thead {
   color: white;
 }
 
+.pointer {
+  cursor: pointer;
+}
+
 tbody {
   background-color: white;
 }
@@ -224,14 +222,6 @@ footer p {
   transition: background-color .2s;
 }
 
-/* label:first-of-type {
-  transform: translateX(-40px);
-}
-
-label:last-of-type {
-  transform: translateX(40px);
-} */
-
 .checkboxLabel:hover, input:focus + label {
   box-shadow: 0 0 20px rgba(0, 0, 0, .6);
 }
@@ -245,10 +235,6 @@ input:checked + .repCheckbox {
 input:checked + .indCheckbox {
   background-color: #959724;
 }
-
-/* input:checked + .checkboxLabel::before {
-  background-color: #fff;
-} */
 
 
 /* Select State Style */
@@ -264,11 +250,7 @@ input:checked + .indCheckbox {
   background: #6a8494;
   background-image: none;
 }
-/* Custom Select */
-/* .selectState {
-  margin: 0% 50%;
-  
-} */
+
 .selectState {
   position: relative;
   display: block;
@@ -281,6 +263,7 @@ input:checked + .indCheckbox {
   overflow: hidden;
   border-radius: 0.5em;
 }
+
 #state {
   width: 100%;
   height: 100%;
@@ -289,9 +272,11 @@ input:checked + .indCheckbox {
   color: #fff;
   cursor: pointer;
 }
+
 #state::-ms-expand {
   display: none;
 }
+
 /* Arrow */
 .selectState::after {
   content: '\25BC';
@@ -303,15 +288,18 @@ input:checked + .indCheckbox {
   background: #34495e;
   pointer-events: none;
 }
+
 /* Transition */
 .selectState:hover::after {
   color: #f39c12;
 }
+
 .selectState::after {
   -webkit-transition: .25s all ease;
   -o-transition: .25s all ease;
   transition: .25s all ease;
 }
+
 /* Label */
 .selectLabel {
   margin: 0px 5px 0px 0px;
@@ -332,24 +320,12 @@ input:checked + .indCheckbox {
   background: #6a8494;
   background-image: none;
 }
-/* Custom Select */
-/* @media (max-width: 992px) {
-  .selectPage {
-    margin: 0px 0px 0px -10px;
-  } */
 
-/* @media (max-width: 525px) {
-  .selectPage {
-    margin: 0px 0px 0px 0px;
-  }
-
-} */
 .selectPage {
   position: relative;
   display: block;
   width: 2em;
   max-width: 4em;
-  /* margin: 0% 35%; */
   height: 1.8em;
   line-height: 2;
   background: #2c3e50;
@@ -357,6 +333,7 @@ input:checked + .indCheckbox {
   border-radius: 0.5em;
   padding: 0;
 }
+
 #memPerPage {
   width: 100%;
   height: 100%;
@@ -365,9 +342,11 @@ input:checked + .indCheckbox {
   color: #fff;
   cursor: pointer;
 }
+
 #memPerPage::-ms-expand {
   display: none;
 }
+
 /* Arrow */
 .selectPage::after {
   content: '\25BC';
@@ -379,10 +358,12 @@ input:checked + .indCheckbox {
   background: #34495e;
   pointer-events: none;
 }
+
 /* Transition */
 .selectPage:hover::after {
   color: #f39c12;
 }
+
 .selectPage::after {
   -webkit-transition: .25s all ease;
   -o-transition: .25s all ease;

@@ -175,16 +175,17 @@
         <table class="table table-bordered table-hover">
           <thead>
             <tr>
-              <th @click="sortByColum('first_name')">Senator <i class="fas fa-sort"></i></th>
+              <th class="pointer" @click="sortByColum('first_name')">Senator <i class="fas fa-sort"></i></th>
 
-              <th @click="sortByColum('party')">Party<span class="d-none d-md-inline">
+              <th class="pointer" @click="sortByColum('party')">Party<span class="d-none d-md-inline">
                   Affiliation</span> <i class="fas fa-sort"></i></th>
 
-              <th @click="sortByColum('state')">State <i class="fas fa-sort"></i></th>
+              <th class="pointer" @click="sortByColum('state')">State <i class="fas fa-sort"></i></th>
 
-              <th @click="sortByColum('seniority')" class="seniorityCol">Seniority <i class="fas fa-sort"></i></th>
+              <th class="pointer" @click="sortByColum('seniority')" class="seniorityCol">Seniority <i
+                  class="fas fa-sort"></i></th>
 
-              <th @click="sortByColum('votes_with_party_pct')"><span class="d-md-none">%</span><span
+              <th class="pointer" @click="sortByColum('votes_with_party_pct')"><span class="d-md-none">%</span><span
                   class="d-none d-md-inline">Percentage</span> of Votes <i class="fas fa-sort"></i></th>
             </tr>
           </thead>

@@ -14,13 +14,6 @@
 	<!-- Bootstrap 4 -->
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
 		integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-	<!-- Bootstrap-Vue -->
-	<!-- <link type="text/css" rel="stylesheet" href="//unpkg.com/bootstrap/dist/css/bootstrap.min.css" />
-	<link type="text/css" rel="stylesheet" href="//unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.css" />
-
-	<script src="//unpkg.com/@babel/polyfill@latest/dist/polyfill.min.js"></script>
-	<script src="//unpkg.com/vue@latest/dist/vue.min.js"></script>
-	<script src="//unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.js"></script> -->
 	<!-- Favicon -->
 	<link rel="icon" href="img/27750690_796277473909261_1454095537477120106_n.png">
 	<!-- My CSS -->
@@ -178,12 +171,13 @@
 				<table class="table table-bordered table-hover">
 					<thead>
 						<tr>
-							<th @click="sortByColum('first_name')">Senator <i class="fas fa-sort"></i></th>
-							<th @click="sortByColum('party')">Party<span class="d-none d-md-inline">
+							<th class="pointer" @click="sortByColum('first_name')">Senator <i class="fas fa-sort"></i></th>
+							<th class="pointer" @click="sortByColum('party')">Party<span class="d-none d-md-inline">
 									Affiliation</span> <i class="fas fa-sort"></i></th>
-							<th @click="sortByColum('state')">State <i class="fas fa-sort"></i></th>
-							<th @click="sortByColum('seniority')" class="seniorityCol">Seniority <i class="fas fa-sort"></i></th>
-							<th @click="sortByColum('votes_with_party_pct')"><span class="d-md-none">%</span><span
+							<th class="pointer" @click="sortByColum('state')">State <i class="fas fa-sort"></i></th>
+							<th class="pointer" @click="sortByColum('seniority')" class="seniorityCol">Seniority <i
+									class="fas fa-sort"></i></th>
+							<th class="pointer" @click="sortByColum('votes_with_party_pct')"><span class="d-md-none">%</span><span
 									class="d-none d-md-inline">Percentage</span> of Votes <i class="fas fa-sort"></i></th>
 						</tr>
 					</thead>
