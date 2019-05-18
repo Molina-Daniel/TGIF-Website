@@ -193,6 +193,15 @@ footer p {
   width: 100px;
 }
 
+#heart {
+  color: red;
+}
+
+.github {
+  text-decoration: none;
+  color: black;
+}
+
 
 /* Checkboxes Style */
 .checkboxLabel {
