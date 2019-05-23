@@ -14,13 +14,6 @@
   <!-- Bootstrap 4 -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <!-- Bootstrap-Vue -->
-  <!-- <link type="text/css" rel="stylesheet" href="//unpkg.com/bootstrap/dist/css/bootstrap.min.css" />
-  <link type="text/css" rel="stylesheet" href="//unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.css" />
-
-  <script src="//unpkg.com/@babel/polyfill@latest/dist/polyfill.min.js"></script>
-  <script src="//unpkg.com/vue@latest/dist/vue.min.js"></script>
-  <script src="//unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.js"></script> -->
   <!-- Favicon -->
   <link rel="icon" href="img/27750690_796277473909261_1454095537477120106_n.png">
   <!-- My CSS -->
@@ -187,16 +180,6 @@
           </thead>
           <tbody id="dataTable">
             <tr is="tablemember" v-for="member in sortedMembers" :memberx="member"></tr>
-
-            <!-- <tr v-for="member in sortedMembers">
-							<td><a class="text-dark" v-bind:href="member.url" target="_blank">{{ member.first_name }}
-									{{ member.middle_name }}
-									{{ member.last_name }}</a></td>
-							<td>{{ member.party }}</td>
-							<td>{{ member.state }}</td>
-							<td class="seniorityCol">{{ member.seniority }}</td>
-							<td>{{ member.votes_with_party_pct }}</td>
-						</tr> -->
           </tbody>
         </table>
         <div v-if="!filteredTable.length" id="noData" class="text-center h3 font-italic">
@@ -236,10 +219,15 @@
     </div>
 
     <footer class="row pt-3">
-      <div class="col-12 text-center text-muted py-3 my-3 border">
-        <p class="m-0">&copy; 2019 TGIF | All Rights Reserved</p>
+      <div class="col-12 text-center py-3 my-3 border">
+        <div class="row">
+          <p class="col-6 m-0">&copy; 2019 TGIF | All Rights Reserved</p>
+          <p class="col-6 m-0">Made with <i id="heart" class="fas fa-heart"></i> by <a class="github"
+              href="https://github.com/Molina-Daniel" target="_blank">Daniel Molina</a></p>
+        </div>
       </div>
-    </footer>
+  </div>
+  </footer>
 
   </div>
 
